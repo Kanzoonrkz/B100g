@@ -70,14 +70,80 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+type MarketingPageDocumentDataSlicesSlice = HeroSectionSlice;
 
 /**
- * Primary content in *HeroSection → Primary*
+ * Content for Marketing Page documents
+ */
+interface MarketingPageDocumentData {
+  /**
+   * Slice Zone field in *Marketing Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marketing_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<MarketingPageDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Marketing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: marketing_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Marketing Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marketing_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Marketing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: marketing_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Marketing Page document from Prismic
+ *
+ * - **API ID**: `marketing_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MarketingPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<MarketingPageDocumentData>,
+    "marketing_page",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomepageDocument | MarketingPageDocument;
+
+/**
+ * Primary content in *TextSection → Primary*
  */
 export interface HeroSectionSliceDefaultPrimary {
   /**
-   * Hero Title field in *HeroSection → Primary*
+   * Hero Title field in *TextSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -87,7 +153,7 @@ export interface HeroSectionSliceDefaultPrimary {
   hero_title: prismic.KeyTextField;
 
   /**
-   * Description field in *HeroSection → Primary*
+   * Description field in *TextSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -98,7 +164,7 @@ export interface HeroSectionSliceDefaultPrimary {
 }
 
 /**
- * Default variation for HeroSection Slice
+ * Default variation for TextSection Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -111,11 +177,11 @@ export type HeroSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *HeroSection → Primary*
+ * Primary content in *TextSection → Primary*
  */
 export interface HeroSectionSliceCtaButtonPrimary {
   /**
-   * Hero Title field in *HeroSection → Primary*
+   * Hero Title field in *TextSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -125,7 +191,7 @@ export interface HeroSectionSliceCtaButtonPrimary {
   hero_title: prismic.KeyTextField;
 
   /**
-   * Description field in *HeroSection → Primary*
+   * Description field in *TextSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -135,7 +201,7 @@ export interface HeroSectionSliceCtaButtonPrimary {
   description: prismic.KeyTextField;
 
   /**
-   * Button Link field in *HeroSection → Primary*
+   * Button Link field in *TextSection → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -145,7 +211,7 @@ export interface HeroSectionSliceCtaButtonPrimary {
   button_link: prismic.LinkField;
 
   /**
-   * Button Label field in *HeroSection → Primary*
+   * Button Label field in *TextSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -156,7 +222,7 @@ export interface HeroSectionSliceCtaButtonPrimary {
 }
 
 /**
- * CTA Button variation for HeroSection Slice
+ * CTA Button variation for TextSection Slice
  *
  * - **API ID**: `ctaButton`
  * - **Description**: Default
@@ -169,14 +235,14 @@ export type HeroSectionSliceCtaButton = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *HeroSection*
+ * Slice variation for *TextSection*
  */
 type HeroSectionSliceVariation =
   | HeroSectionSliceDefault
   | HeroSectionSliceCtaButton;
 
 /**
- * HeroSection Shared Slice
+ * TextSection Shared Slice
  *
  * - **API ID**: `hero_section`
  * - **Description**: HeroSection
@@ -200,6 +266,9 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      MarketingPageDocument,
+      MarketingPageDocumentData,
+      MarketingPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,

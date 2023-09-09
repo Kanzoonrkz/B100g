@@ -1,7 +1,7 @@
 {
   "id": "hero_section",
   "type": "SharedSlice",
-  "name": "HeroSection",
+  "name": "TextSection",
   "description": "HeroSection",
   "variations": [
     {
