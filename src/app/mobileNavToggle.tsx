@@ -41,21 +41,20 @@ export default function MobileNavToggle(props: Props) {
 						<div className="fixed inset-0 bg-black bg-opacity-50" />
 					</Transition.Child>
 
-					<div className="fixed inset-y-0 right-0 h-screen overflow-y-auto">
-						<Transition.Child
-							as={Fragment}
-							appear={true}
-							enter="transition ease-in-out duration-300 transform"
-							enterFrom="translate-x-full"
-							enterTo="translate-x-0"
-							leave="transition ease-in-out duration-300 transform"
-							leaveFrom="translate-x-0"
-							leaveTo="translate-x-full"
-						>
+					<Transition.Child
+						as={Fragment}
+						enter="transition ease-out duration-300 transform"
+						enterFrom="translate-x-full"
+						enterTo="translate-x-0"
+						leave="transition ease-in-out duration-300 transform"
+						leaveFrom="translate-x-0"
+						leaveTo="translate-x-full"
+					>
+						<div className="fixed inset-y-0 right-0 h-screen overflow-y-auto">
 							<Dialog.Panel className="w-full h-screen max-w-md p-6 overflow-hidden text-lg text-left transition-all transform bg-black shadow-xl">
 								<nav>
 									<ul className="flex flex-col items-start justify-start gap-6">
-										<li key={'home'}>
+										<li key={"home"}>
 											<PrismicNextLink
 												field={props.nav.data.home_navigation}
 												onClick={() => setIsOpen(false)}
@@ -73,7 +72,7 @@ export default function MobileNavToggle(props: Props) {
 												</PrismicNextLink>
 											</li>
 										))}
-										<li key={'button'}>
+										<li key={"button"}>
 											<PrismicNextLink
 												field={props.nav.data.button_link}
 												className="px-3 py-1 text-black bg-white rounded"
@@ -85,8 +84,8 @@ export default function MobileNavToggle(props: Props) {
 									</ul>
 								</nav>
 							</Dialog.Panel>
-						</Transition.Child>
-					</div>
+						</div>
+					</Transition.Child>
 				</Dialog>
 			</Transition>
 		</>
