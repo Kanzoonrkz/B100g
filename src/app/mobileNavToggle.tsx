@@ -46,7 +46,7 @@ export default function MobileNavToggle(props: Props) {
 							as={Fragment}
 							appear={true}
 							enter="transition ease-in-out duration-300 transform"
-							enterFrom="-translate-x-full"
+							enterFrom="translate-x-full"
 							enterTo="translate-x-0"
 							leave="transition ease-in-out duration-300 transform"
 							leaveFrom="translate-x-0"
