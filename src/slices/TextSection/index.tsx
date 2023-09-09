@@ -21,8 +21,11 @@ const HeroSection = ({ slice }: HeroSectionProps): JSX.Element => {
 				<h1 className="text-5xl font-bold">{slice.primary.hero_title}</h1>
 				<p>{slice.primary.description}</p>
 				{slice.variation === "ctaButton" && (
-					<button className="px-3 py-1 text-black bg-white rounded">
-						<PrismicNextLink field={slice.primary.button_link}>
+					<button>
+						<PrismicNextLink
+							field={slice.primary.button_link}
+							className="px-3 py-1 text-black bg-white rounded"
+						>
 							{slice.primary.button_label}
 						</PrismicNextLink>
 					</button>
