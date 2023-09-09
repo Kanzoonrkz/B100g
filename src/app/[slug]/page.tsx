@@ -4,17 +4,6 @@ import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 import React from "react";
 
-// export async function generateStaticParams() {
-// 	const client = createClient();
-// 	const pages = await client.getAllByType("marketing_page");
-
-// 	console.log('pages',pages);
-
-// 	return pages.map((page) => {
-// 		return { uid: page.uid };
-// 	});
-// }
-
 const queryMarketingPage = (slug: string) => {
 	const client = createClient();
 	return client.getByUID("marketing_page", slug);

@@ -136,7 +136,100 @@ export type MarketingPageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument | MarketingPageDocument;
+/**
+ * Item in *Navigation → Nav Group*
+ */
+export interface NavigationDocumentDataNavGroupItem {
+  /**
+   * Nav Label field in *Navigation → Nav Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.nav_group[].nav_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nav_label: prismic.KeyTextField;
+
+  /**
+   * Nav Link field in *Navigation → Nav Group*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.nav_group[].nav_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  nav_link: prismic.ContentRelationshipField<"marketing_page">;
+}
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Home Navigation field in *Navigation*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.home_navigation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  home_navigation: prismic.ContentRelationshipField<"homepage">;
+
+  /**
+   * Nav Group field in *Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.nav_group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  nav_group: prismic.GroupField<Simplify<NavigationDocumentDataNavGroupItem>>;
+
+  /**
+   * Button Link field in *Navigation*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.button_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Label field in *Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.button_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | HomepageDocument
+  | MarketingPageDocument
+  | NavigationDocument;
 
 /**
  * Primary content in *TextSection → Primary*
@@ -269,6 +362,9 @@ declare module "@prismicio/client" {
       MarketingPageDocument,
       MarketingPageDocumentData,
       MarketingPageDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataNavGroupItem,
       AllDocumentTypes,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
