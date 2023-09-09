@@ -39,7 +39,7 @@ export default async function Blogs() {
 			<SliceZone slices={page.data.slices} components={components} />
 			<ul className="grid max-w-6xl grid-cols-3 gap-6 px-6 py-2 mx-auto">
 				{blogs.map((blog: any) => (
-					<li className="grid w-full gap-2 p-3 text-black bg-white place-content-start rounded-xl">
+					<li key={blog.id} className="grid w-full gap-2 p-3 text-black bg-white place-content-start rounded-xl">
 						<Link href={`/blogs/${blog.uid}`}>
 							<PrismicNextImage
 								className="object-cover rounded-lg aspect-video"

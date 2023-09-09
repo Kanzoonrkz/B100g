@@ -16,7 +16,7 @@ const BlogContent = ({ slice }: BlogContentProps): JSX.Element => {
 				data-slice-variation={slice.variation}
 			>
 				{slice.items.map((item: any) => (
-					<PrismicRichText field={item.text}/>
+					<PrismicRichText field={item.text} key={item.id}/>
 				))}
 			</section>
 	);
