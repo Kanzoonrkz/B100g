@@ -23,7 +23,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "blog_content": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

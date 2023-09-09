@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogsDocumentDataSlicesSlice = never;
+type BlogsDocumentDataSlicesSlice = BlogContentSlice;
 
 /**
  * Content for Blogs documents
@@ -306,6 +306,145 @@ export type AllDocumentTypes =
   | NavigationDocument;
 
 /**
+ * Primary content in *BlogContent → Items*
+ */
+export interface BlogContentSliceDefaultItem {
+  /**
+   * Text field in *BlogContent → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for BlogContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogContentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<BlogContentSliceDefaultItem>
+>;
+
+/**
+ * Primary content in *BlogContent → Primary*
+ */
+export interface BlogContentSliceSectionTitlePrimary {
+  /**
+   * Section Title field in *BlogContent → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *BlogContent → Items*
+ */
+export interface BlogContentSliceSectionTitleItem {
+  /**
+   * Text field in *BlogContent → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Section Title variation for BlogContent Slice
+ *
+ * - **API ID**: `sectionTitle`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogContentSliceSectionTitle = prismic.SharedSliceVariation<
+  "sectionTitle",
+  Simplify<BlogContentSliceSectionTitlePrimary>,
+  Simplify<BlogContentSliceSectionTitleItem>
+>;
+
+/**
+ * Primary content in *BlogContent → Primary*
+ */
+export interface BlogContentSliceImagePrimary {
+  /**
+   * Image field in *BlogContent → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Alt field in *BlogContent → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content.primary.alt
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  alt: prismic.KeyTextField;
+
+  /**
+   * Description field in *BlogContent → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Image variation for BlogContent Slice
+ *
+ * - **API ID**: `image`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogContentSliceImage = prismic.SharedSliceVariation<
+  "image",
+  Simplify<BlogContentSliceImagePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogContent*
+ */
+type BlogContentSliceVariation =
+  | BlogContentSliceDefault
+  | BlogContentSliceSectionTitle
+  | BlogContentSliceImage;
+
+/**
+ * BlogContent Shared Slice
+ *
+ * - **API ID**: `blog_content`
+ * - **Description**: BlogContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogContentSlice = prismic.SharedSlice<
+  "blog_content",
+  BlogContentSliceVariation
+>;
+
+/**
  * Primary content in *TextSection → Primary*
  */
 export interface HeroSectionSliceDefaultPrimary {
@@ -443,6 +582,15 @@ declare module "@prismicio/client" {
       NavigationDocumentData,
       NavigationDocumentDataNavGroupItem,
       AllDocumentTypes,
+      BlogContentSlice,
+      BlogContentSliceDefaultItem,
+      BlogContentSliceSectionTitlePrimary,
+      BlogContentSliceSectionTitleItem,
+      BlogContentSliceImagePrimary,
+      BlogContentSliceVariation,
+      BlogContentSliceDefault,
+      BlogContentSliceSectionTitle,
+      BlogContentSliceImage,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceCtaButtonPrimary,
