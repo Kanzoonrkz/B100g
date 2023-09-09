@@ -10,7 +10,6 @@ const queryNavigation = () => {
 
 export default async function Navigation() {
 	const nav = await queryNavigation();
-	console.log(nav);
 
 	return (
 		<div className="sticky top-0 px-6 py-4 bg-black ">

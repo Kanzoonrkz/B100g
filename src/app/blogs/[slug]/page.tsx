@@ -35,8 +35,6 @@ export default async function BlogPage({
 }) {
 	const page = await queryBlogPage(params.slug);
 
-	console.log(page);
-
 	return (
 		<div className="grid gap-10 py-24 pt-12">
 			<h1 className="max-w-6xl px-6 mx-auto text-5xl font-bold text-center">{page.data.title}</h1>
