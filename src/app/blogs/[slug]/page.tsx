@@ -39,7 +39,7 @@ export default async function BlogPage({
 
 	return (
 		<div className="grid gap-10 py-24 pt-12">
-			<h1 className="px-6 text-5xl font-bold text-center">{page.data.title}</h1>
+			<h1 className="max-w-6xl px-6 mx-auto text-5xl font-bold text-center">{page.data.title}</h1>
 			<PrismicNextImage
 				className="object-cover w-full max-w-6xl mx-auto h-60 lg:h-80"
 				field={page.data.meta_image}

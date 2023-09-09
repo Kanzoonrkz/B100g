@@ -1,6 +1,7 @@
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
 import React from "react";
+import MobileNavToggle from "./mobileNavToggle";
 
 const queryNavigation = () => {
 	const client = createClient();
@@ -9,18 +10,20 @@ const queryNavigation = () => {
 
 export default async function Navigation() {
 	const nav = await queryNavigation();
+	console.log(nav);
 
 	return (
-		<div className="sticky top-0 px-6 py-2 bg-black ">
-			<nav className="flex items-center justify-between max-w-6xl mx-auto">
+		<div className="sticky top-0 px-6 py-4 bg-black ">
+			<nav className="relative flex items-center justify-center max-w-6xl mx-auto md:justify-between">
 				<PrismicNextLink
 					className="text-4xl font-bold"
 					field={nav.data.home_navigation}
 				>
 					B100g
 				</PrismicNextLink>
-				<ul className="flex items-center gap-6">
-					<li>
+				<MobileNavToggle nav={nav} />
+				<ul className="items-center hidden gap-6 md:flex">
+					<li key={"home"}>
 						<PrismicNextLink field={nav.data.home_navigation}>
 							Home
 						</PrismicNextLink>
@@ -34,6 +37,7 @@ export default async function Navigation() {
 					))}
 					<li>
 						<PrismicNextLink
+							key={"button"}
 							field={nav.data.button_link}
 							className="px-3 py-1 text-black bg-white rounded"
 						>
