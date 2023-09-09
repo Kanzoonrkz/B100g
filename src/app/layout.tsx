@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import Navigation from "./navigation";
 
+export const dynamic = 'force-dynamic'
+
 const fira_code = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

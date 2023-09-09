@@ -5,8 +5,6 @@ import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 
-export const dynamic = 'force-dynamic'
-
 const queryBlogPage = (uid: string) => {
 	const client = createClient();
 	return client.getByUID("blogs", uid);

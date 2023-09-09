@@ -3,8 +3,6 @@ import { PrismicNextLink } from "@prismicio/next";
 import React from "react";
 import MobileNavToggle from "./mobileNavToggle";
 
-export const dynamic = 'force-dynamic'
-
 const queryNavigation = () => {
 	const client = createClient();
 	return client.getSingle("navigation");
