@@ -16,7 +16,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" className="text-xs md:text-base">
 			<body className={fira_code.className + ' bg-black text-white'}>
 				<Navigation />
 				{children}
