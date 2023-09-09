@@ -33,7 +33,6 @@ export default async function MarketingPage({
 	params: { slug: string };
 }) {
 	const page = await queryMarketingPage(params.slug);
-	console.log(page);
 
 	return <SliceZone slices={page.data.slices} components={components} />;
 }
