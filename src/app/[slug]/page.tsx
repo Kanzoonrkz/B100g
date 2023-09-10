@@ -34,5 +34,9 @@ export default async function MarketingPage({
 }) {
 	const page = await queryMarketingPage(params.slug);
 
-	return <SliceZone slices={page.data.slices} components={components} />;
+	return (
+		<main>
+			<SliceZone slices={page.data.slices} components={components} />
+		</main>
+	);
 }

@@ -35,11 +35,14 @@ export default async function Blogs() {
 	const blogs = await queryAllBlogs();
 
 	return (
-		<>
+		<main>
 			<SliceZone slices={page.data.slices} components={components} />
-			<ul className="grid max-w-6xl grid-cols-3 gap-6 px-6 py-2 mx-auto">
+			<ul className="grid max-w-6xl grid-cols-2 gap-6 px-6 py-2 mx-auto md:grid-cols-3">
 				{blogs.map((blog: any) => (
-					<li key={blog.id} className="grid w-full gap-2 p-3 text-black bg-white place-content-start rounded-xl">
+					<li
+						key={blog.id}
+						className="grid w-full gap-2 p-3 text-black bg-white place-content-start rounded-xl"
+					>
 						<Link href={`/blogs/${blog.uid}`}>
 							<PrismicNextImage
 								className="object-cover rounded-lg aspect-video"
@@ -52,6 +55,6 @@ export default async function Blogs() {
 					</li>
 				))}
 			</ul>
-		</>
+		</main>
 	);
 }

@@ -15,7 +15,7 @@ const HeroSection = ({ slice }: HeroSectionProps): JSX.Element => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className={`${slice.variation === "ctaButton"?'bg-gray-700':'bg-black'}`}
+			className={`px-6 ${slice.variation === "ctaButton"?'bg-gray-700':'bg-black'}`}
 		>
 			<div className="grid gap-6 text-center py-36 place-items-center">
 				<h1 className="text-5xl font-bold">{slice.primary.hero_title}</h1>
