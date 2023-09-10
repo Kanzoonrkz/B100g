@@ -12,7 +12,7 @@ export default async function Navigation() {
 	const nav = await queryNavigation();
 
 	return (
-		<div className="sticky top-0 px-6 py-4 bg-black ">
+		<div className="sticky top-0 px-6 py-4 bg-black">
 			<nav className="relative flex items-center justify-center max-w-6xl mx-auto md:justify-between">
 				<PrismicNextLink
 					className="text-4xl font-bold"
