@@ -5,25 +5,26 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Link from "next/link";
 
 /**
- * Props for `BlogContent`.
+ * Props for `BlogContentSection`.
  */
-export type BlogContentProps = SliceComponentProps<Content.BlogContentSlice>;
+export type BlogContentSectionProps =
+	SliceComponentProps<Content.BlogContentSectionSlice>;
 
 /**
- * Component for "BlogContent" Slices.
+ * Component for "BlogContentSection" Slices.
  */
-const BlogContent = ({ slice }: BlogContentProps): JSX.Element => {
-	console.log(slice);
-
+const BlogContentSection = ({
+	slice,
+}: BlogContentSectionProps): JSX.Element => {
 	return (
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 		>
-			{slice.variation == "sectionTitle" && (
-				<h2 className="">
+			{slice.primary.section_title && (
+				<h2>
 					<Link
-						id={slice.primary.section_title?.toString()}
+						id={slice.primary.section_title.toString()}
 						href={`#${slice.primary.section_title}`}
 						className="flex items-center gap-3 w-fit group"
 					>
@@ -45,4 +46,4 @@ const BlogContent = ({ slice }: BlogContentProps): JSX.Element => {
 	);
 };
 
-export default BlogContent;
+export default BlogContentSection;

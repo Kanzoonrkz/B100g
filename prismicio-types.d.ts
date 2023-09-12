@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogsDocumentDataSlicesSlice = BlogContentSlice;
+type BlogsDocumentDataSlicesSlice = BlogContentSectionSlice;
 
 /**
  * Content for Blogs documents
@@ -306,152 +306,73 @@ export type AllDocumentTypes =
   | NavigationDocument;
 
 /**
- * Primary content in *BlogContent → Items*
+ * Primary content in *BlogContentSection → Primary*
  */
-export interface BlogContentSliceDefaultItem {
+export interface BlogContentSectionSliceDefaultPrimary {
   /**
-   * Text field in *BlogContent → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.items[].text
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  text: prismic.RichTextField;
-}
-
-/**
- * Default variation for BlogContent Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogContentSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  Simplify<BlogContentSliceDefaultItem>
->;
-
-/**
- * Primary content in *BlogContent → Primary*
- */
-export interface BlogContentSliceSectionTitlePrimary {
-  /**
-   * Section Title field in *BlogContent → Primary*
+   * Section Title field in *BlogContentSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.primary.section_title
+   * - **API ID Path**: blog_content_section.primary.section_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   section_title: prismic.KeyTextField;
 }
 
 /**
- * Primary content in *BlogContent → Items*
+ * Primary content in *BlogContentSection → Items*
  */
-export interface BlogContentSliceSectionTitleItem {
+export interface BlogContentSectionSliceDefaultItem {
   /**
-   * Text field in *BlogContent → Items*
+   * Image field in *BlogContentSection → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_content_section.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Text field in *BlogContentSection → Items*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.items[].text
+   * - **API ID Path**: blog_content_section.items[].text
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   text: prismic.RichTextField;
-
-  /**
-   * Image field in *BlogContent → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.items[].image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
 }
 
 /**
- * Section Title variation for BlogContent Slice
+ * Default variation for BlogContentSection Slice
  *
- * - **API ID**: `sectionTitle`
+ * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type BlogContentSliceSectionTitle = prismic.SharedSliceVariation<
-  "sectionTitle",
-  Simplify<BlogContentSliceSectionTitlePrimary>,
-  Simplify<BlogContentSliceSectionTitleItem>
+export type BlogContentSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogContentSectionSliceDefaultPrimary>,
+  Simplify<BlogContentSectionSliceDefaultItem>
 >;
 
 /**
- * Primary content in *BlogContent → Primary*
+ * Slice variation for *BlogContentSection*
  */
-export interface BlogContentSliceImagePrimary {
-  /**
-   * Image field in *BlogContent → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Alt field in *BlogContent → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.primary.alt
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  alt: prismic.KeyTextField;
-
-  /**
-   * Description field in *BlogContent → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  description: prismic.KeyTextField;
-}
+type BlogContentSectionSliceVariation = BlogContentSectionSliceDefault;
 
 /**
- * Image variation for BlogContent Slice
+ * BlogContentSection Shared Slice
  *
- * - **API ID**: `image`
- * - **Description**: Default
+ * - **API ID**: `blog_content_section`
+ * - **Description**: BlogContentSection
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type BlogContentSliceImage = prismic.SharedSliceVariation<
-  "image",
-  Simplify<BlogContentSliceImagePrimary>,
-  never
->;
-
-/**
- * Slice variation for *BlogContent*
- */
-type BlogContentSliceVariation =
-  | BlogContentSliceDefault
-  | BlogContentSliceSectionTitle
-  | BlogContentSliceImage;
-
-/**
- * BlogContent Shared Slice
- *
- * - **API ID**: `blog_content`
- * - **Description**: BlogContent
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogContentSlice = prismic.SharedSlice<
-  "blog_content",
-  BlogContentSliceVariation
+export type BlogContentSectionSlice = prismic.SharedSlice<
+  "blog_content_section",
+  BlogContentSectionSliceVariation
 >;
 
 /**
@@ -592,15 +513,11 @@ declare module "@prismicio/client" {
       NavigationDocumentData,
       NavigationDocumentDataNavGroupItem,
       AllDocumentTypes,
-      BlogContentSlice,
-      BlogContentSliceDefaultItem,
-      BlogContentSliceSectionTitlePrimary,
-      BlogContentSliceSectionTitleItem,
-      BlogContentSliceImagePrimary,
-      BlogContentSliceVariation,
-      BlogContentSliceDefault,
-      BlogContentSliceSectionTitle,
-      BlogContentSliceImage,
+      BlogContentSectionSlice,
+      BlogContentSectionSliceDefaultPrimary,
+      BlogContentSectionSliceDefaultItem,
+      BlogContentSectionSliceVariation,
+      BlogContentSectionSliceDefault,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceCtaButtonPrimary,
