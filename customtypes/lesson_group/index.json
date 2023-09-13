@@ -1,0 +1,40 @@
+{
+  "id": "lesson_group",
+  "label": "Lesson Group",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "lesson_list": {
+        "type": "Group",
+        "config": {
+          "label": "Lesson List",
+          "fields": {
+            "lesson": {
+              "type": "Link",
+              "config": {
+                "label": "Lesson",
+                "select": "document",
+                "customtypes": ["lesson"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

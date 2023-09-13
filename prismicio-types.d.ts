@@ -77,6 +77,107 @@ interface BlogsDocumentData {
 export type BlogsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogsDocumentData>, "blogs", Lang>;
 
+/**
+ * Item in *Course → Parent Lesson List*
+ */
+export interface CourseDocumentDataParentLessonListItem {
+  /**
+   * Lesson field in *Course → Parent Lesson List*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course.parent_lesson_list[].lesson
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  lesson: prismic.ContentRelationshipField<"lesson" | "lesson_group">;
+}
+
+type CourseDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Course documents
+ */
+interface CourseDocumentData {
+  /**
+   * Title field in *Course*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Parent Lesson List field in *Course*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course.parent_lesson_list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  parent_lesson_list: prismic.GroupField<
+    Simplify<CourseDocumentDataParentLessonListItem>
+  >;
+
+  /**
+   * Slice Zone field in *Course*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CourseDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Course*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: course.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Course*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Course*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: course.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Course document from Prismic
+ *
+ * - **API ID**: `course`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CourseDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
+
 type HomepageDocumentDataSlicesSlice = HeroSectionSlice;
 
 /**
@@ -140,6 +241,139 @@ export type HomepageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<HomepageDocumentData>,
     "homepage",
+    Lang
+  >;
+
+type LessonDocumentDataSlicesSlice = BlogContentSectionSlice;
+
+/**
+ * Content for Lesson documents
+ */
+interface LessonDocumentData {
+  /**
+   * Title field in *Lesson*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lesson.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Lesson*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lesson.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<LessonDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Lesson*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: lesson.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Lesson*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lesson.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Lesson*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: lesson.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Lesson document from Prismic
+ *
+ * - **API ID**: `lesson`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LessonDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<LessonDocumentData>, "lesson", Lang>;
+
+/**
+ * Item in *Lesson Group → Lesson List*
+ */
+export interface LessonGroupDocumentDataLessonListItem {
+  /**
+   * Lesson field in *Lesson Group → Lesson List*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lesson_group.lesson_list[].lesson
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  lesson: prismic.ContentRelationshipField<"lesson">;
+}
+
+/**
+ * Content for Lesson Group documents
+ */
+interface LessonGroupDocumentData {
+  /**
+   * Title field in *Lesson Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lesson_group.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Lesson List field in *Lesson Group*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lesson_group.lesson_list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  lesson_list: prismic.GroupField<
+    Simplify<LessonGroupDocumentDataLessonListItem>
+  >;
+}
+
+/**
+ * Lesson Group document from Prismic
+ *
+ * - **API ID**: `lesson_group`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LessonGroupDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LessonGroupDocumentData>,
+    "lesson_group",
     Lang
   >;
 
@@ -301,16 +535,19 @@ export type NavigationDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BlogsDocument
+  | CourseDocument
   | HomepageDocument
+  | LessonDocument
+  | LessonGroupDocument
   | MarketingPageDocument
   | NavigationDocument;
 
 /**
- * Primary content in *BlogContentSection → Primary*
+ * Primary content in *ContentSection → Primary*
  */
 export interface BlogContentSectionSliceDefaultPrimary {
   /**
-   * Section Title field in *BlogContentSection → Primary*
+   * Section Title field in *ContentSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -321,11 +558,11 @@ export interface BlogContentSectionSliceDefaultPrimary {
 }
 
 /**
- * Primary content in *BlogContentSection → Items*
+ * Primary content in *ContentSection → Items*
  */
 export interface BlogContentSectionSliceDefaultItem {
   /**
-   * Image field in *BlogContentSection → Items*
+   * Image field in *ContentSection → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -335,7 +572,7 @@ export interface BlogContentSectionSliceDefaultItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Text field in *BlogContentSection → Items*
+   * Text field in *ContentSection → Items*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -346,7 +583,7 @@ export interface BlogContentSectionSliceDefaultItem {
 }
 
 /**
- * Default variation for BlogContentSection Slice
+ * Default variation for ContentSection Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -359,12 +596,12 @@ export type BlogContentSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *BlogContentSection*
+ * Slice variation for *ContentSection*
  */
 type BlogContentSectionSliceVariation = BlogContentSectionSliceDefault;
 
 /**
- * BlogContentSection Shared Slice
+ * ContentSection Shared Slice
  *
  * - **API ID**: `blog_content_section`
  * - **Description**: BlogContentSection
@@ -503,9 +740,19 @@ declare module "@prismicio/client" {
       BlogsDocument,
       BlogsDocumentData,
       BlogsDocumentDataSlicesSlice,
+      CourseDocument,
+      CourseDocumentData,
+      CourseDocumentDataParentLessonListItem,
+      CourseDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      LessonDocument,
+      LessonDocumentData,
+      LessonDocumentDataSlicesSlice,
+      LessonGroupDocument,
+      LessonGroupDocumentData,
+      LessonGroupDocumentDataLessonListItem,
       MarketingPageDocument,
       MarketingPageDocumentData,
       MarketingPageDocumentDataSlicesSlice,
