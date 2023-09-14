@@ -5,6 +5,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import CourseLessonList from "./courseLessonList";
+import Link from "next/link";
 
 const queryCoursePage = (uid: string) => {
 	const client = createClient();
@@ -23,7 +24,7 @@ export async function generateMetadata({
 }: {
 	params: { slug: string };
 }) {
-	const page = await queryCoursePage(params.slug);
+	const page = await queryCoursePage(params.slug[0]);
 
 	return {
 		title: page.data.meta_title,
@@ -38,10 +39,12 @@ export async function generateMetadata({
 
 export default async function BlogPage({
 	params,
+	children,
 }: {
 	params: { slug: string };
+	children: React.ReactNode;
 }) {
-	const page = await queryCoursePage(params.slug);
+	const page = await queryCoursePage(params.slug[0]);
 
 	return (
 		<main className="grid gap-10 py-24 pt-12">
@@ -52,10 +55,13 @@ export default async function BlogPage({
 				className="object-cover w-full h-40 max-w-6xl mx-auto lg:h-80"
 				field={page.data.meta_image}
 			></PrismicNextImage>
-			<CourseLessonList list={page.data.parent_lesson_list}/>
-			<article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
+			<Link href={"asdasd"}>asd</Link>
+			<Link href={"aopasdo"}>asodk</Link>
+			<CourseLessonList list={page.data.parent_lesson_list} />
+			{/* <article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
 				<SliceZone slices={page.data.slices} components={components} />
-			</article>
+			</article> */}
+			<div>{children}</div>
 		</main>
 	);
 }
