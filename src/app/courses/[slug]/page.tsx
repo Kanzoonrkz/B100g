@@ -1,14 +1,10 @@
-// "use client";
 import React from "react";
 import { createClient } from "@/prismicio";
 import * as prismic from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
-import {
-	LessonDocument,
-	LessonGroupDocument,
-} from "../../../../prismicio-types";
+import CourseLessonList from "./courseLessonList";
 
 const queryCoursePage = (uid: string) => {
 	const client = createClient();
@@ -56,28 +52,7 @@ export default async function BlogPage({
 				className="object-cover w-full h-40 max-w-6xl mx-auto lg:h-80"
 				field={page.data.meta_image}
 			></PrismicNextImage>
-			{page.data.parent_lesson_list.map(
-				(parent_lesson: {
-					lesson: LessonDocument | LessonGroupDocument | any;
-				}) => (
-					<div key={parent_lesson.lesson.id}>
-						{parent_lesson.lesson.type === "lesson" ? (
-							<div>{parent_lesson.lesson.data.title}</div>
-						) : (
-							<div>
-								<div>{parent_lesson.lesson.data.title}</div>
-								{parent_lesson.lesson.data.lesson_list.map(
-									(child_lesson: { lesson: LessonDocument }) => (
-										<div key={child_lesson.lesson.id}>
-											{child_lesson.lesson.data.title}
-										</div>
-									)
-								)}
-							</div>
-						)}
-					</div>
-				)
-			)}
+			<CourseLessonList list={page.data.parent_lesson_list}/>
 			<article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
 				<SliceZone slices={page.data.slices} components={components} />
 			</article>
