@@ -43,7 +43,7 @@ export default async function Blogs() {
 						key={course.id}
 						className="grid w-full gap-2 p-3 text-black bg-white place-content-start rounded-xl"
 					>
-						<Link href={`/blogs/${course.uid}`}>
+						<Link href={`/courses/${course.uid}`}>
 							<PrismicNextImage
 								className="object-cover rounded-lg aspect-video"
 								field={course.data.meta_image}

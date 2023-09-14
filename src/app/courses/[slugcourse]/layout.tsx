@@ -22,9 +22,9 @@ const queryCoursePage = (uid: string) => {
 export async function generateMetadata({
 	params,
 }: {
-	params: { slug: string };
+	params: { slugcourse: string };
 }) {
-	const page = await queryCoursePage(params.slug[0]);
+	const page = await queryCoursePage(params.slugcourse);
 
 	return {
 		title: page.data.meta_title,
@@ -41,10 +41,10 @@ export default async function BlogPage({
 	params,
 	children,
 }: {
-	params: { slug: string };
+	params: { slugcourse: string };
 	children: React.ReactNode;
 }) {
-	const page = await queryCoursePage(params.slug[0]);
+	const page = await queryCoursePage(params.slugcourse);
 
 	return (
 		<main className="grid gap-10 py-24 pt-12">
@@ -55,13 +55,20 @@ export default async function BlogPage({
 				className="object-cover w-full h-40 max-w-6xl mx-auto lg:h-80"
 				field={page.data.meta_image}
 			></PrismicNextImage>
-			<Link href={"asdasd"}>asd</Link>
-			<Link href={"aopasdo"}>asodk</Link>
-			<CourseLessonList list={page.data.parent_lesson_list} />
-			{/* <article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
-				<SliceZone slices={page.data.slices} components={components} />
-			</article> */}
-			<div>{children}</div>
+			<div className="flex w-full max-w-6xl px-6 mx-auto">
+				<div>
+					<nav className="sticky top-24">
+						<CourseLessonList
+							list={page.data.parent_lesson_list}
+							link={`/courses/${params.slugcourse}`}
+						/>
+					</nav>
+				</div>
+
+				<article className="w-full max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
+					{children}
+				</article>
+			</div>
 		</main>
 	);
 }
