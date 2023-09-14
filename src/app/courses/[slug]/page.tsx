@@ -10,7 +10,7 @@ import {
 	LessonGroupDocument,
 } from "../../../../prismicio-types";
 
-const queryBlogPage = (uid: string) => {
+const queryCoursePage = (uid: string) => {
 	const client = createClient();
 	return client.getByUID("course", uid, {
 		fetchLinks: [
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }: {
 	params: { slug: string };
 }) {
-	const page = await queryBlogPage(params.slug);
+	const page = await queryCoursePage(params.slug);
 
 	return {
 		title: page.data.meta_title,
@@ -45,8 +45,7 @@ export default async function BlogPage({
 }: {
 	params: { slug: string };
 }) {
-	const page = await queryBlogPage(params.slug);
-	console.log(page);
+	const page = await queryCoursePage(params.slug);
 
 	return (
 		<main className="grid gap-10 py-24 pt-12">
@@ -61,7 +60,7 @@ export default async function BlogPage({
 				(parent_lesson: {
 					lesson: LessonDocument | LessonGroupDocument | any;
 				}) => (
-					<>
+					<div key={parent_lesson.lesson.id}>
 						{parent_lesson.lesson.type === "lesson" ? (
 							<div>{parent_lesson.lesson.data.title}</div>
 						) : (
@@ -69,12 +68,14 @@ export default async function BlogPage({
 								<div>{parent_lesson.lesson.data.title}</div>
 								{parent_lesson.lesson.data.lesson_list.map(
 									(child_lesson: { lesson: LessonDocument }) => (
-										<div>{child_lesson.lesson.data.title}</div>
+										<div key={child_lesson.lesson.id}>
+											{child_lesson.lesson.data.title}
+										</div>
 									)
 								)}
 							</div>
 						)}
-					</>
+					</div>
 				)
 			)}
 			<article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
