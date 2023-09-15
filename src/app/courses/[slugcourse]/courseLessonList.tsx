@@ -15,7 +15,7 @@ interface Props {
 
 export default function CourseLessonList(props: Props) {
 	return (
-		<div className="grid gap-2 text-xl border border-white rounded">
+		<div className="sticky grid gap-2 text-xl border border-white rounded top-24">
 				<Link href={`${props.link}`}>
 					<div className="p-2">Course Menu</div>
 				</Link>

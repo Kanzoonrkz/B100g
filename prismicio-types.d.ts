@@ -92,7 +92,7 @@ export interface CourseDocumentDataParentLessonListItem {
   lesson: prismic.ContentRelationshipField<"lesson" | "lesson_group">;
 }
 
-type CourseDocumentDataSlicesSlice = never;
+type CourseDocumentDataSlicesSlice = BlogContentSectionSlice;
 
 /**
  * Content for Course documents

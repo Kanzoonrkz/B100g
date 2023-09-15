@@ -39,7 +39,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "blog_content_section": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

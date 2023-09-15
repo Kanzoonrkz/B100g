@@ -56,14 +56,12 @@ export default async function BlogPage({
 				field={page.data.meta_image}
 			></PrismicNextImage>
 			<div className="flex w-full max-w-6xl px-6 mx-auto">
-				<div>
-					<nav className="sticky top-24">
+				<nav>
 						<CourseLessonList
 							list={page.data.parent_lesson_list}
 							link={`/courses/${params.slugcourse}`}
 						/>
-					</nav>
-				</div>
+				</nav>
 
 				<article className="w-full max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
 					{children}
