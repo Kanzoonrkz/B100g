@@ -37,7 +37,7 @@ export async function generateMetadata({
 	};
 }
 
-export default async function BlogPage({
+export default async function CourseLayout({
 	params,
 	children,
 }: {
@@ -57,13 +57,12 @@ export default async function BlogPage({
 			></PrismicNextImage>
 			<div className="flex w-full max-w-6xl px-6 mx-auto">
 				<nav>
-						<CourseLessonList
-							list={page.data.parent_lesson_list}
-							link={`/courses/${params.slugcourse}`}
-						/>
+					<CourseLessonList
+						list={page.data.parent_lesson_list}
+						link={`/courses/${params.slugcourse}`}
+					/>
 				</nav>
-
-				<article className="w-full max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
+				<article className="w-full max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline first:prose-h2:mt-0 first:prose-p:mt-0">
 					{children}
 				</article>
 			</div>
