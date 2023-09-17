@@ -2,6 +2,8 @@ import { createClient } from "@/prismicio";
 import * as prismic from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
+import Image from "next/image";
+import { Metadata } from "next";
 
 const queryHomepage = () => {
 	const client = createClient();
@@ -14,10 +16,11 @@ export async function generateMetadata() {
 	return {
 		title: page.data.meta_title,
 		description: page.data.meta_description,
+		Images: prismic.asImageSrc(page.data.meta_image),
 		openGraph: {
 			title: page.data.meta_title,
 			description: page.data.meta_description,
-			Image: prismic.asImageSrc(page.data.meta_image),
+			Images: prismic.asImageSrc(page.data.meta_image),
 		},
 	};
 }
