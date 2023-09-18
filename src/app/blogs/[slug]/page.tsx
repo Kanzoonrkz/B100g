@@ -23,7 +23,7 @@ export async function generateMetadata({
 		openGraph: {
 			title: page.data.meta_title,
 			description: page.data.meta_description,
-			image: prismic.asImageSrc(page.data.meta_image),
+			images: prismic.asImageSrc(page.data.meta_image),
 		},
 	};
 }
