@@ -14,7 +14,7 @@ export default async function LessonPage({ params }: { params: any }) {
 			<section>
 				<h1>{page.data.title}</h1>
 			</section>
-			<SliceZone slices={page.data.slices} components={components} />;
+			<SliceZone slices={page.data.slices} components={components} />
 		</>
 	);
 }

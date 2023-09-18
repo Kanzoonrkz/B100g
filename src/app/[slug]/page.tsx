@@ -19,11 +19,10 @@ export async function generateMetadata({
 	return {
 		title: page.data.meta_title,
 		description: page.data.meta_description,
-		Images: prismic.asImageSrc(page.data.meta_image),
 		openGraph: {
 			title: page.data.meta_title,
 			description: page.data.meta_description,
-			Images: prismic.asImageSrc(page.data.meta_image),
+			images: prismic.asImageSrc(page.data.meta_image),
 		},
 	};
 }
