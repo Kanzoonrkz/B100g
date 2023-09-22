@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import Navigation from "./navigation";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 const fira_code = Fira_Code({ subsets: ["latin"] });
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className="text-sm md:text-base">
-			<body className={fira_code.className + ' bg-black text-white'}>
+			<body className={fira_code.className + " bg-black text-white"}>
 				<Navigation />
 				{children}
 			</body>
