@@ -15,7 +15,7 @@ export default function MobileNavToggle(props: Props) {
 	return (
 		<>
 			<button
-				className="absolute right-0 md:hidden"
+				className="absolute z-50 right-0 md:hidden"
 				onClick={() => {
 					setIsOpen(!isOpen);
 				}}

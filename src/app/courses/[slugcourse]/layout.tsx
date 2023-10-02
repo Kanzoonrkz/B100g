@@ -63,6 +63,7 @@ export default async function CourseLayout({
 					{children}
 				</article>
 			</div>
+			<div className="h-screen">asd</div>
 		</main>
 	);
 }
