@@ -20,7 +20,7 @@ const BlogContentSection = ({
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="bg-black prose text-white prose-invert prose-a:no-underline first:prose-h2:mt-0 first:prose-p:mt-0"
+			className="bg-black prose text-white prose-invert prose-a:no-underline"
 		>
 			{slice.primary.section_title && (
 				<h2>

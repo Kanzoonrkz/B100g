@@ -33,7 +33,7 @@ export default function CourseLessonList(props: Props) {
 								{({ open }) => (
 									<>
 										<Disclosure.Button
-											className={`flex gap-3 items-center p-2`}
+											className={`flex gap-3 items-center p-2 text-start`}
 										>
 											<span>{parent_lesson.lesson.data.title}</span>
 											<ChevronDownIcon

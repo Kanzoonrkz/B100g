@@ -59,11 +59,10 @@ export default async function CourseLayout({
 						link={`/courses/${params.slugcourse}`}
 					/>
 				</nav>
-				<article className="w-full max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline first:prose-h2:mt-0 first:prose-p:mt-0">
+				<article className="w-full max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline grid gap-5">
 					{children}
 				</article>
 			</div>
-			<div className="h-screen">asd</div>
 		</main>
 	);
 }

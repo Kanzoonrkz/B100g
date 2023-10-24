@@ -44,7 +44,7 @@ export default async function BlogPage({
 				className="object-cover w-full h-40 max-w-6xl mx-auto lg:h-80"
 				field={page.data.meta_image}
 			></PrismicNextImage>
-			<article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
+			<article className="max-w-2xl px-6 mx-auto prose text-white prose-invert prose-a:no-underline grid gap-5">
 				<SliceZone slices={page.data.slices} components={components} />
 			</article>
 		</main>
