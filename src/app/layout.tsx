@@ -20,8 +20,8 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="text-sm md:text-base">
 			<body className={fira_code.className + " bg-black text-white"}>
-				<Navigation />
-				{children}
+					<Navigation />
+					{children}
 			</body>
 		</html>
 	);
