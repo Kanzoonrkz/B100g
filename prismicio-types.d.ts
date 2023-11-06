@@ -78,6 +78,174 @@ export type BlogsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogsDocumentData>, "blogs", Lang>;
 
 /**
+ * Item in *Categorized Navigation → Page Group*
+ */
+export interface CategorizedNavigationDocumentDataPageGroupItem {
+  /**
+   * Link field in *Categorized Navigation → Page Group*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.page_group[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.ContentRelationshipField<"homepage" | "marketing_page">;
+
+  /**
+   * Label field in *Categorized Navigation → Page Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.page_group[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Categorized Navigation → Content Group*
+ */
+export interface CategorizedNavigationDocumentDataContentGroupItem {
+  /**
+   * Link field in *Categorized Navigation → Content Group*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.content_group[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.ContentRelationshipField<"marketing_page">;
+
+  /**
+   * Label field in *Categorized Navigation → Content Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.content_group[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Categorized Navigation → Social Group*
+ */
+export interface CategorizedNavigationDocumentDataSocialGroupItem {
+  /**
+   * Link field in *Categorized Navigation → Social Group*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.social_group[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Label field in *Categorized Navigation → Social Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.social_group[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Content for Categorized Navigation documents
+ */
+interface CategorizedNavigationDocumentData {
+  /**
+   * Page Label field in *Categorized Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.page_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  page_label: prismic.KeyTextField;
+
+  /**
+   * Page Group field in *Categorized Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.page_group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  page_group: prismic.GroupField<
+    Simplify<CategorizedNavigationDocumentDataPageGroupItem>
+  >;
+
+  /**
+   * Content Label field in *Categorized Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.content_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content_label: prismic.KeyTextField;
+
+  /**
+   * Content Group field in *Categorized Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.content_group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  content_group: prismic.GroupField<
+    Simplify<CategorizedNavigationDocumentDataContentGroupItem>
+  >;
+
+  /**
+   * Social Label field in *Categorized Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.social_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  social_label: prismic.KeyTextField;
+
+  /**
+   * Social Group field in *Categorized Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorized_navigation.social_group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  social_group: prismic.GroupField<
+    Simplify<CategorizedNavigationDocumentDataSocialGroupItem>
+  >;
+}
+
+/**
+ * Categorized Navigation document from Prismic
+ *
+ * - **API ID**: `categorized_navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategorizedNavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CategorizedNavigationDocumentData>,
+    "categorized_navigation",
+    Lang
+  >;
+
+/**
  * Item in *Course → Parent Lesson List*
  */
 export interface CourseDocumentDataParentLessonListItem {
@@ -535,6 +703,7 @@ export type NavigationDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BlogsDocument
+  | CategorizedNavigationDocument
   | CourseDocument
   | HomepageDocument
   | LessonDocument
@@ -740,6 +909,11 @@ declare module "@prismicio/client" {
       BlogsDocument,
       BlogsDocumentData,
       BlogsDocumentDataSlicesSlice,
+      CategorizedNavigationDocument,
+      CategorizedNavigationDocumentData,
+      CategorizedNavigationDocumentDataPageGroupItem,
+      CategorizedNavigationDocumentDataContentGroupItem,
+      CategorizedNavigationDocumentDataSocialGroupItem,
       CourseDocument,
       CourseDocumentData,
       CourseDocumentDataParentLessonListItem,
