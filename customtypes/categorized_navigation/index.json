@@ -6,92 +6,17 @@
   "status": true,
   "json": {
     "Main": {
-      "page_label": {
-        "type": "Text",
-        "config": {
-          "label": "Page Label",
-          "placeholder": ""
-        }
-      },
-      "page_group": {
+      "nav_group": {
         "type": "Group",
         "config": {
-          "label": "Page Group",
+          "label": "Nav Group",
           "fields": {
-            "link": {
+            "items": {
               "type": "Link",
               "config": {
-                "label": "Link",
+                "label": "Items",
                 "select": "document",
-                "customtypes": ["homepage", "marketing_page"]
-              }
-            },
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              }
-            }
-          }
-        }
-      },
-      "content_label": {
-        "type": "Text",
-        "config": {
-          "label": "Content Label",
-          "placeholder": ""
-        }
-      },
-      "content_group": {
-        "type": "Group",
-        "config": {
-          "label": "Content Group",
-          "fields": {
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link",
-                "select": "document",
-                "customtypes": ["marketing_page"]
-              }
-            },
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              }
-            }
-          }
-        }
-      },
-      "social_label": {
-        "type": "Text",
-        "config": {
-          "label": "Social Label",
-          "placeholder": ""
-        }
-      },
-      "social_group": {
-        "type": "Group",
-        "config": {
-          "label": "Social Group",
-          "fields": {
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "select": null
-              }
-            },
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
+                "customtypes": ["navigation_group"]
               }
             }
           }
