@@ -31,7 +31,7 @@ export default async function Footer() {
 			</div>
 			<div className="flex flex-col items-start justify-between w-full gap-10 md:flex-row">
 				{data.nav_group.map((group: any) => (
-					<div className="grid">
+					<div key={group.id} className="grid">
 						<b className="pb-3">{group.items.data.group_label}</b>
 						<ul className="grid gap-2">
 							{group.items.data.navigations.map((nav: any) => (
