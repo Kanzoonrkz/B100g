@@ -19,6 +19,14 @@
           "placeholder": ""
         }
       },
+      "writer": {
+        "type": "Link",
+        "config": {
+          "label": "Writer",
+          "select": "document",
+          "customtypes": ["writer"]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

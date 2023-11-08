@@ -22,6 +22,17 @@ interface BlogsDocumentData {
   title: prismic.KeyTextField;
 
   /**
+   * Writer field in *Blogs*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogs.writer
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  writer: prismic.ContentRelationshipField<"writer">;
+
+  /**
    * Slice Zone field in *Blogs*
    *
    * - **Field Type**: Slice Zone
@@ -170,6 +181,17 @@ interface CourseDocumentData {
   parent_lesson_list: prismic.GroupField<
     Simplify<CourseDocumentDataParentLessonListItem>
   >;
+
+  /**
+   * Writer field in *Course*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course.writer
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  writer: prismic.ContentRelationshipField<"writer">;
 
   /**
    * Slice Zone field in *Course*
@@ -664,6 +686,56 @@ export type NavigationGroupDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Writer documents
+ */
+interface WriterDocumentData {
+  /**
+   * Name field in *Writer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: writer.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Image field in *Writer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: writer.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *Writer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: writer.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Writer document from Prismic
+ *
+ * - **API ID**: `writer`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WriterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<WriterDocumentData>, "writer", Lang>;
+
 export type AllDocumentTypes =
   | BlogsDocument
   | CategorizedNavigationDocument
@@ -673,7 +745,8 @@ export type AllDocumentTypes =
   | LessonGroupDocument
   | MarketingPageDocument
   | NavigationDocument
-  | NavigationGroupDocument;
+  | NavigationGroupDocument
+  | WriterDocument;
 
 /**
  * Primary content in *ContentSection → Primary*
@@ -898,6 +971,8 @@ declare module "@prismicio/client" {
       NavigationGroupDocument,
       NavigationGroupDocumentData,
       NavigationGroupDocumentDataNavigationsItem,
+      WriterDocument,
+      WriterDocumentData,
       AllDocumentTypes,
       BlogContentSectionSlice,
       BlogContentSectionSliceDefaultPrimary,
