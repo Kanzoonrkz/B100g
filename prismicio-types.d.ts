@@ -536,24 +536,13 @@ export interface NavigationDocumentDataNavGroupItem {
    * - **API ID Path**: navigation.nav_group[].nav_link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  nav_link: prismic.ContentRelationshipField<"marketing_page">;
+  nav_link: prismic.ContentRelationshipField<"marketing_page" | "homepage">;
 }
 
 /**
  * Content for Navigation documents
  */
 interface NavigationDocumentData {
-  /**
-   * Home Navigation field in *Navigation*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.home_navigation
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  home_navigation: prismic.ContentRelationshipField<"homepage">;
-
   /**
    * Nav Group field in *Navigation*
    *
@@ -564,28 +553,6 @@ interface NavigationDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   nav_group: prismic.GroupField<Simplify<NavigationDocumentDataNavGroupItem>>;
-
-  /**
-   * Button Link field in *Navigation*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.button_link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_link: prismic.LinkField;
-
-  /**
-   * Button Label field in *Navigation*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.button_label
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button_label: prismic.KeyTextField;
 }
 
 /**

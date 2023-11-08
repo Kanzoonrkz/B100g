@@ -6,14 +6,6 @@
   "status": true,
   "json": {
     "Main": {
-      "home_navigation": {
-        "type": "Link",
-        "config": {
-          "label": "Home Navigation",
-          "select": "document",
-          "customtypes": ["homepage"]
-        }
-      },
       "nav_group": {
         "type": "Group",
         "config": {
@@ -31,26 +23,10 @@
               "config": {
                 "label": "Nav Link",
                 "select": "document",
-                "customtypes": ["marketing_page"]
+                "customtypes": ["marketing_page", "homepage"]
               }
             }
           }
-        }
-      },
-      "button_link": {
-        "type": "Link",
-        "config": {
-          "label": "Button Link",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "select": null
-        }
-      },
-      "button_label": {
-        "type": "Text",
-        "config": {
-          "label": "Button Label",
-          "placeholder": ""
         }
       }
     }
