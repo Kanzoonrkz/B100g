@@ -1,8 +1,8 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
-import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars2Icon } from "@heroicons/react/24/solid";
 import { PrismicNextLink } from "@prismicio/next";
-import React, { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import { NavigationDocument } from "../../prismicio-types";
 
 interface Props {
@@ -15,7 +15,7 @@ export default function MobileNavToggle(props: Props) {
 	return (
 		<>
 			<button
-				className="absolute z-50 right-0 md:hidden"
+				className="absolute right-0 z-50 md:hidden"
 				onClick={() => {
 					setIsOpen(!isOpen);
 				}}
@@ -50,37 +50,23 @@ export default function MobileNavToggle(props: Props) {
 						leaveFrom="translate-x-0"
 						leaveTo="translate-x-full"
 					>
-						<div className="fixed inset-y-0 right-0 h-screen overflow-y-auto">
+						<div className="fixed inset-y-0 right-0 w-2/5 h-screen overflow-y-auto">
 							<Dialog.Panel className="w-full h-screen max-w-md p-6 overflow-hidden text-lg text-left transition-all transform bg-black shadow-xl">
 								<nav>
 									<ul className="flex flex-col items-start justify-start gap-6">
-										<li key={"home"}>
-											<PrismicNextLink
-												field={props.nav.data.home_navigation}
-												onClick={() => setIsOpen(false)}
-											>
-												Home
-											</PrismicNextLink>
-										</li>
 										{props.nav.data.nav_group.map((link: any) => (
 											<li key={link.id}>
 												<PrismicNextLink
-													href={`/${link.nav_link.uid}`}
-													onClick={() => setIsOpen(false)}
+													href={
+														link.nav_link.type === "homepage"
+															? "/"
+															: link.nav_link.uid
+													}
 												>
 													{link.nav_label}
 												</PrismicNextLink>
 											</li>
 										))}
-										<li key={"button"}>
-											<PrismicNextLink
-												field={props.nav.data.button_link}
-												className="px-3 py-1 text-black bg-white rounded"
-												onClick={() => setIsOpen(false)}
-											>
-												{props.nav.data.button_label}
-											</PrismicNextLink>
-										</li>
 									</ul>
 								</nav>
 							</Dialog.Panel>

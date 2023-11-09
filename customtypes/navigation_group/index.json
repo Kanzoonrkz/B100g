@@ -1,0 +1,56 @@
+{
+  "id": "navigation_group",
+  "label": "Navigation Group",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "group_label": {
+        "type": "Text",
+        "config": {
+          "label": "Group Label",
+          "placeholder": ""
+        }
+      },
+      "navigations": {
+        "type": "Group",
+        "config": {
+          "label": "Navigations",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "internal_link": {
+              "type": "Link",
+              "config": {
+                "label": "Internal Link",
+                "select": "document",
+                "customtypes": ["homepage", "marketing_page"]
+              }
+            },
+            "external_link": {
+              "type": "Link",
+              "config": {
+                "label": "External Link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

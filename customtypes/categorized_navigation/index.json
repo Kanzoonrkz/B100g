@@ -1,6 +1,6 @@
 {
-  "id": "navigation",
-  "label": "Navigation",
+  "id": "categorized_navigation",
+  "label": "Categorized Navigation",
   "format": "custom",
   "repeatable": false,
   "status": true,
@@ -11,19 +11,12 @@
         "config": {
           "label": "Nav Group",
           "fields": {
-            "nav_label": {
-              "type": "Text",
-              "config": {
-                "label": "Nav Label",
-                "placeholder": ""
-              }
-            },
-            "nav_link": {
+            "items": {
               "type": "Link",
               "config": {
-                "label": "Nav Link",
+                "label": "Items",
                 "select": "document",
-                "customtypes": ["marketing_page", "homepage"]
+                "customtypes": ["navigation_group"]
               }
             }
           }

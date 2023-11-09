@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import Navigation from "./navigation";
+import Footer from "./footer";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +23,7 @@ export default function RootLayout({
 			<body className={fira_code.className + " bg-black text-white"}>
 					<Navigation />
 					{children}
+					<Footer/>
 			</body>
 		</html>
 	);

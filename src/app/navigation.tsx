@@ -2,6 +2,7 @@ import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
 import React from "react";
 import MobileNavToggle from "./mobileNavToggle";
+import Link from "next/link";
 
 const queryNavigation = () => {
 	const client = createClient();
@@ -12,37 +13,24 @@ export default async function Navigation() {
 	const nav = await queryNavigation();
 
 	return (
-		<div className="sticky top-0 px-6 py-4 z-10 bg-black">
+		<div className="sticky top-0 z-10 px-6 py-4 bg-black">
 			<nav className="relative flex items-center justify-center max-w-6xl mx-auto md:justify-between">
-				<PrismicNextLink
-					className="text-4xl font-bold"
-					field={nav.data.home_navigation}
-				>
+				<Link className="text-4xl font-bold" href={"/"}>
 					B100g
-				</PrismicNextLink>
+				</Link>
 				<MobileNavToggle nav={nav} />
-				<ul className="items-center hidden gap-6 md:flex">
-					<li key={"home"}>
-						<PrismicNextLink field={nav.data.home_navigation}>
-							Home
-						</PrismicNextLink>
-					</li>
+				<ul className="items-center hidden gap-12 md:flex">
 					{nav.data.nav_group.map((link: any) => (
 						<li key={link.id}>
-							<PrismicNextLink href={`/${link.nav_link.uid}`}>
+							<PrismicNextLink
+								href={
+									link.nav_link.type === "homepage" ? "/" : link.nav_link.uid
+								}
+							>
 								{link.nav_label}
 							</PrismicNextLink>
 						</li>
 					))}
-					<li>
-						<PrismicNextLink
-							key={"button"}
-							field={nav.data.button_link}
-							className="px-3 py-1 text-black bg-white rounded"
-						>
-							{nav.data.button_label}
-						</PrismicNextLink>
-					</li>
 				</ul>
 			</nav>
 		</div>
