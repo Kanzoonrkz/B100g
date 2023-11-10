@@ -2,7 +2,7 @@ import React from "react";
 import { createClient } from "@/prismicio";
 import * as prismic from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import CourseLessonList from "./courseLessonList";
+import CourseLessonList from "../../../components/courseLessonList";
 
 const queryCoursePage = (uid: string) => {
 	const client = createClient();

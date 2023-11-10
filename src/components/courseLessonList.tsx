@@ -5,7 +5,7 @@ import React from "react";
 import {
 	LessonDocument,
 	LessonGroupDocument,
-} from "../../../../prismicio-types";
+} from "../../prismicio-types";
 import Link from "next/link";
 
 interface Props {
