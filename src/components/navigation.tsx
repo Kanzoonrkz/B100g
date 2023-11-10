@@ -23,9 +23,7 @@ export default async function Navigation() {
 					{nav.data.nav_group.map((link: any) => (
 						<li key={link.id}>
 							<PrismicNextLink
-								href={
-									link.nav_link.type === "homepage" ? "/" : link.nav_link.uid
-								}
+								field={link.nav_link}
 							>
 								{link.nav_label}
 							</PrismicNextLink>

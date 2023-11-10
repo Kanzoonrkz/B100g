@@ -35,15 +35,8 @@ export default async function Footer() {
 						<b className="pb-3">{group.items.data.group_label}</b>
 						<ul className="grid gap-2">
 							{group.items.data.navigations.map((nav: any) => (
-								<li key={nav.internal_link.id || nav.external_link.id}>
-									<PrismicNextLink
-										href={
-											nav.internal_link.type === "homepage"
-												? "/"
-												: nav.internal_link.uid || nav.external_link.url
-										}
-										target={nav.external_link.target}
-									>
+								<li key={nav.link.id}>
+									<PrismicNextLink field={nav.link} target={nav.link.target}>
 										{nav.label}
 									</PrismicNextLink>
 								</li>
