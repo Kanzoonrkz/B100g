@@ -586,26 +586,14 @@ export interface NavigationGroupDocumentDataNavigationsItem {
   label: prismic.KeyTextField;
 
   /**
-   * Internal Link field in *Navigation Group → Navigations*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation_group.navigations[].internal_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  internal_link: prismic.ContentRelationshipField<
-    "homepage" | "marketing_page"
-  >;
-
-  /**
-   * External Link field in *Navigation Group → Navigations*
+   * Link field in *Navigation Group → Navigations*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: navigation_group.navigations[].external_link
+   * - **API ID Path**: navigation_group.navigations[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  external_link: prismic.LinkField;
+  link: prismic.LinkField;
 }
 
 /**

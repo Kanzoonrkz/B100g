@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
-import Navigation from "./navigation";
-import Footer from "./footer";
+import Navigation from "../components/navigation";
+import Footer from "../components/footer";
 
 export const dynamic = "force-dynamic";
 

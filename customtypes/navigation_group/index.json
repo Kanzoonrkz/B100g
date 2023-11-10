@@ -31,18 +31,10 @@
                 "placeholder": ""
               }
             },
-            "internal_link": {
+            "link": {
               "type": "Link",
               "config": {
-                "label": "Internal Link",
-                "select": "document",
-                "customtypes": ["homepage", "marketing_page"]
-              }
-            },
-            "external_link": {
-              "type": "Link",
-              "config": {
-                "label": "External Link",
+                "label": "Link",
                 "placeholder": "",
                 "allowTargetBlank": true,
                 "select": null
