@@ -38,8 +38,6 @@ export default async function Blogs() {
 	const page = await queryMainBlogsPage();
 	const blogs = await queryAllBlogs();
 
-	console.log(blogs[0]);
-
 	return (
 		<main>
 			<SliceZone slices={page.data.slices} components={components} />
