@@ -13,7 +13,10 @@ const queryMainBlogsPage = () => {
 
 const queryAllBlogs = () => {
 	const client = createClient();
-	return client.getAllByType("blogs", { limit: 9 });
+	return client.getAllByType("blogs", {
+		limit: 9,
+		fetchLinks: ["writer.name", "writer.image"],
+	});
 };
 
 export async function generateMetadata() {
@@ -35,22 +38,36 @@ export default async function Blogs() {
 	const page = await queryMainBlogsPage();
 	const blogs = await queryAllBlogs();
 
+	console.log(blogs[0]);
+
 	return (
 		<main>
 			<SliceZone slices={page.data.slices} components={components} />
-			<ul className="grid max-w-6xl grid-cols-2 gap-6 px-6 py-2 mx-auto md:grid-cols-3">
+			<ul className="grid max-w-xl grid-cols-1 px-6 py-2 mx-auto gap-14 md:max-w-6xl md:grid-cols-2">
 				{blogs.map((blog: any) => (
-					<li
-						key={blog.id}
-						className="grid w-full gap-2 p-3 text-black bg-white place-content-start rounded-xl"
-					>
+					<li key={blog.id} className="grid w-full gap-2 place-content-start">
 						<Link href={`/blogs/${blog.uid}`}>
 							<PrismicNextImage
-								className="object-cover rounded-lg aspect-video"
+								className="object-cover aspect-video"
+								width={640}
 								field={blog.data.meta_image}
 							></PrismicNextImage>
 						</Link>
-						<Link href={`/blogs/${blog.uid}`} className="font-bold">
+						<div className="flex items-center gap-2 py-1">
+							<PrismicNextImage
+								className="object-cover rounded-full aspect-square"
+								height={20}
+								width={20}
+								field={blog.data.writer.data.image}
+							/>
+							<span className="text-sm text-gray-400">
+								{blog.data.writer.data.name}
+							</span>
+						</div>
+						<Link
+							href={`/blogs/${blog.uid}`}
+							className="text-lg font-bold line-clamp-2"
+						>
 							{blog.data.title}
 						</Link>
 					</li>
