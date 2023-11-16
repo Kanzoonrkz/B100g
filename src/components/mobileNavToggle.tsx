@@ -15,6 +15,7 @@ export default function MobileNavToggle(props: Props) {
 	return (
 		<>
 			<button
+				aria-label="toggle-mobile-navigation"
 				className="absolute right-0 z-50 md:hidden"
 				onClick={() => {
 					setIsOpen(!isOpen);
@@ -57,7 +58,9 @@ export default function MobileNavToggle(props: Props) {
 										{props.nav.data.nav_group.map((link: any) => (
 											<li key={link.id}>
 												<PrismicNextLink
+													className="p-2"
 													field={link.nav_link}
+													onClick={() => setIsOpen(false)}
 												>
 													{link.nav_label}
 												</PrismicNextLink>
