@@ -44,7 +44,7 @@ export default async function BlogPage({
 				field={page.data.meta_image}
 				width={1080}
 			/>
-			<h1 className="max-w-xl px-6 mx-auto text-3xl font-bold text-center md:max-w-6xl md:text-5xl">
+			<h1 className="max-w-xl px-6 mx-auto text-3xl font-bold text-center md:max-w-6xl md:text-5xl text-balance">
 				{page.data.title}
 			</h1>
 			<div className="flex w-full max-w-xl px-6 py-2 mx-auto text-start border-y">

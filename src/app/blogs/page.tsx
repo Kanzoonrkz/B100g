@@ -64,7 +64,7 @@ export default async function Blogs() {
 						</div>
 						<Link
 							href={`/blogs/${blog.uid}`}
-							className="text-lg font-bold line-clamp-2"
+							className="text-lg font-bold line-clamp-2 text-pretty"
 						>
 							{blog.data.title}
 						</Link>
