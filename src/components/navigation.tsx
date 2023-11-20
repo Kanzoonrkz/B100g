@@ -22,9 +22,7 @@ export default async function Navigation() {
 				<ul className="items-center hidden gap-12 md:flex">
 					{nav.data.nav_group.map((link: any) => (
 						<li key={link.id}>
-							<PrismicNextLink
-								field={link.nav_link}
-							>
+							<PrismicNextLink className="p-2" field={link.nav_link}>
 								{link.nav_label}
 							</PrismicNextLink>
 						</li>
