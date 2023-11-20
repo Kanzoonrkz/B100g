@@ -668,15 +668,15 @@ interface WriterDocumentData {
   image: prismic.ImageField<never>;
 
   /**
-   * Description field in *Writer*
+   * Company field in *Writer*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: writer.description
+   * - **API ID Path**: writer.company
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  description: prismic.RichTextField;
+  company: prismic.KeyTextField;
 }
 
 /**
