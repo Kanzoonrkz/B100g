@@ -61,7 +61,7 @@ export default async function BlogPage({
 					</aside>
 				</div>
 			</div>
-			<article className="grid max-w-xl gap-5 px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
+			<article className="grid max-w-xl gap-10 px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
 				<SliceZone slices={page.data.slices} components={components} />
 			</article>
 		</main>
