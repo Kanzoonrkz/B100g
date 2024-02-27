@@ -15,7 +15,7 @@ export default async function Navigation() {
 	return (
 		<div className="sticky top-0 z-10 px-6 py-4 bg-black">
 			<nav className="relative flex items-center justify-center max-w-6xl mx-auto md:justify-between">
-				<Link className="text-4xl font-bold" href={"/"}>
+				<Link className="text-4xl" href={"/"}>
 					B100g
 				</Link>
 				<MobileNavToggle nav={nav} />

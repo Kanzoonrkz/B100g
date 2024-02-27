@@ -1,12 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Fira_Code } from "next/font/google";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 
 export const dynamic = "force-dynamic";
-
-const fira_code = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "B100g",
@@ -20,10 +17,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className="text-sm md:text-base">
-			<body className={fira_code.className + " bg-black text-white"}>
-					<Navigation />
-					{children}
-					<Footer/>
+			<body className="text-dark bg-light font-montserrat">
+				<Navigation />
+				{children}
+				<Footer />
 			</body>
 		</html>
 	);
