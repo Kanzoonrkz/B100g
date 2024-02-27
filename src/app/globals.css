@@ -13,3 +13,9 @@
 		text-wrap: balance;
 	}
 }
+
+@layer components {
+  .ccontainer {
+    @apply max-w-6xl px-6 mx-auto md:px-4;
+  }
+}
