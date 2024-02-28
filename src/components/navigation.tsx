@@ -14,7 +14,7 @@ export default async function Navigation() {
 
 	return (
 		<div className="sticky top-0 z-10 bg-light">
-			<nav className="relative flex items-center justify-center py-4 ccontainer md:justify-between">
+			<nav className="relative flex items-center justify-center py-4 container-big md:justify-between">
 				<Link className="text-3xl font-marcellus" href={"/"}>
 					B100g
 				</Link>

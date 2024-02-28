@@ -12,10 +12,24 @@
 	.text-balance {
 		text-wrap: balance;
 	}
+	.transparent-button {
+		/* background-color: blue; Initial button color */
+		color: transparent; /* Make text transparent */
+		-webkit-background-clip: text;
+		background-clip: text;
+		border: none; /* Remove default border (adjust if you want a border) */
+		padding: 10px 20px; /* Adjust as needed */
+		-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+	}
 }
 
 @layer components {
-  .ccontainer {
-    @apply max-w-6xl px-6 mx-auto md:px-4;
+  .container-big {
+    @apply w-full max-w-screen-xl px-6 mx-auto md:px-4;
+  }
+
+	.container-small {
+    @apply w-full max-w-screen-lg px-6 mx-auto md:px-4;
   }
 }
