@@ -249,7 +249,7 @@ interface CourseDocumentData {
 export type CourseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
 
-type HomepageDocumentDataSlicesSlice = HeroSectionSlice;
+type HomepageDocumentDataSlicesSlice = never;
 
 /**
  * Content for Homepage documents
@@ -448,7 +448,7 @@ export type LessonGroupDocument<Lang extends string = string> =
     Lang
   >;
 
-type MarketingPageDocumentDataSlicesSlice = HeroSectionSlice;
+type MarketingPageDocumentDataSlicesSlice = never;
 
 /**
  * Content for Marketing Page documents
