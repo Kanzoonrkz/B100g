@@ -22,7 +22,7 @@ const createButton = <S extends ButtonStyle>(
 	return ({ children, onClick, className }) => (
 		<button
 			className={
-				"text-xl py-2 px-6 rounded-lg " + buttonStyles[style] + className
+				"text-lg py-2 px-4 rounded-lg " + buttonStyles[style] + className
 			}
 			onClick={onClick}
 		>

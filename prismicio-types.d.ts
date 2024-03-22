@@ -249,7 +249,7 @@ interface CourseDocumentData {
 export type CourseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
 
-type HomepageDocumentDataSlicesSlice = never;
+type HomepageDocumentDataSlicesSlice = HeroSectionSlice | HeroTextSlice;
 
 /**
  * Content for Homepage documents
@@ -888,6 +888,209 @@ export type HeroSectionSlice = prismic.SharedSlice<
   HeroSectionSliceVariation
 >;
 
+/**
+ * Primary content in *HeroSection → Primary*
+ */
+export interface HeroTextSliceDefaultPrimary {
+  /**
+   * Title field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Primary Buton Label field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.primary_buton_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  primary_buton_label: prismic.KeyTextField;
+
+  /**
+   * Primary Button Link field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.primary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_button_link: prismic.LinkField;
+
+  /**
+   * Secondary Button Label field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.secondary_button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  secondary_button_label: prismic.KeyTextField;
+
+  /**
+   * Secondary Button Link field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.secondary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  secondary_button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for HeroSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *HeroSection → Primary*
+ */
+export interface HeroTextSliceNoButtonPrimary {
+  /**
+   * Title field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+}
+
+/**
+ * No Button variation for HeroSection Slice
+ *
+ * - **API ID**: `noButton`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTextSliceNoButton = prismic.SharedSliceVariation<
+  "noButton",
+  Simplify<HeroTextSliceNoButtonPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *HeroSection → Primary*
+ */
+export interface HeroTextSliceTitleOnlyPrimary {
+  /**
+   * Title field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Title Only variation for HeroSection Slice
+ *
+ * - **API ID**: `titleOnly`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTextSliceTitleOnly = prismic.SharedSliceVariation<
+  "titleOnly",
+  Simplify<HeroTextSliceTitleOnlyPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *HeroSection → Primary*
+ */
+export interface HeroTextSliceCenteredPrimary {
+  /**
+   * Title field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *HeroSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_text.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+}
+
+/**
+ * Centered variation for HeroSection Slice
+ *
+ * - **API ID**: `centered`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTextSliceCentered = prismic.SharedSliceVariation<
+  "centered",
+  Simplify<HeroTextSliceCenteredPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeroSection*
+ */
+type HeroTextSliceVariation =
+  | HeroTextSliceDefault
+  | HeroTextSliceNoButton
+  | HeroTextSliceTitleOnly
+  | HeroTextSliceCentered;
+
+/**
+ * HeroSection Shared Slice
+ *
+ * - **API ID**: `hero_text`
+ * - **Description**: HeroText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTextSlice = prismic.SharedSlice<
+  "hero_text",
+  HeroTextSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -940,6 +1143,16 @@ declare module "@prismicio/client" {
       HeroSectionSliceVariation,
       HeroSectionSliceDefault,
       HeroSectionSliceCtaButton,
+      HeroTextSlice,
+      HeroTextSliceDefaultPrimary,
+      HeroTextSliceNoButtonPrimary,
+      HeroTextSliceTitleOnlyPrimary,
+      HeroTextSliceCenteredPrimary,
+      HeroTextSliceVariation,
+      HeroTextSliceDefault,
+      HeroTextSliceNoButton,
+      HeroTextSliceTitleOnly,
+      HeroTextSliceCentered,
     };
   }
 }

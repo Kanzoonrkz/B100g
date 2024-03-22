@@ -1,42 +1,42 @@
-"use client";
+// "use client";
 import { createClient } from "@/prismicio";
 import * as prismic from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import Button from "@/components/button";
-import { Disclosure } from "@headlessui/react";
+// import { Disclosure } from "@headlessui/react";
 
-// const queryHomepage = () => {
-// 	const client = createClient();
-// 	return client.getSingle("homepage");
-// };
+const queryHomepage = () => {
+	const client = createClient();
+	return client.getSingle("homepage");
+};
 
 export async function generateMetadata() {
-	// const page = await queryHomepage();
+	const page = await queryHomepage();
 
 	return {
-		title: "Test",
-		description: "Test",
-		openGraph: {
-			title: "Test",
-			description: "Test",
-		},
-		// title: page.data.meta_title,
-		// description: page.data.meta_description,
+		// title: "Test",
+		// description: "Test",
 		// openGraph: {
-		// 	title: page.data.meta_title,
-		// 	description: page.data.meta_description,
-		// 	images: prismic.asImageSrc(page.data.meta_image),
+		// 	title: "Test",
+		// 	description: "Test",
 		// },
+		title: page.data.meta_title,
+		description: page.data.meta_description,
+		openGraph: {
+			title: page.data.meta_title,
+			description: page.data.meta_description,
+			images: prismic.asImageSrc(page.data.meta_image),
+		},
 	};
 }
 
 export default async function Home() {
-	// const page = await queryHomepage();
+	const page = await queryHomepage();
 
 	return (
 		<main>
-			<section className="h-[500px] flex items-center">
+			{/* <section className="h-[500px] flex items-center">
 				<div className="container-small">
 					<h1 className="text-5xl font-marcellus">The AI Content Hub</h1>
 					<p className="max-w-lg text-2xl font-light">
@@ -115,9 +115,9 @@ export default async function Home() {
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> */}
 
-			<section className="px-6 py-6 mx-auto md:px-4">
+			{/* <section className="px-6 py-6 mx-auto md:px-4">
 				<div className="mx-auto container-small">
 					<div className="border-black divide-y divide-black border-y">
 						<Disclosure>
@@ -150,9 +150,9 @@ export default async function Home() {
 						</Disclosure>
 					</div>
 				</div>
-			</section>
+			</section> */}
 
-			{/* <SliceZone slices={page.data.slices} components={components} /> */}
+			<SliceZone slices={page.data.slices} components={components} />
 		</main>
 	);
 }
