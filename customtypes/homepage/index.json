@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "faq_section": {
+              "type": "SharedSlice"
+            },
             "motivational_slice": {
               "type": "SharedSlice"
             },

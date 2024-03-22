@@ -250,6 +250,7 @@ export type CourseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
 
 type HomepageDocumentDataSlicesSlice =
+  | FaqSectionSlice
   | MotivationalSliceSlice
   | HeroSectionSlice
   | HeroTextSlice;
@@ -777,6 +778,61 @@ export type BlogContentSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FaqSection → Items*
+ */
+export interface FaqSectionSliceDefaultItem {
+  /**
+   * Question field in *FaqSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_section.items[].question
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  question: prismic.KeyTextField;
+
+  /**
+   * Answer field in *FaqSection → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_section.items[].answer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FaqSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<FaqSectionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *FaqSection*
+ */
+type FaqSectionSliceVariation = FaqSectionSliceDefault;
+
+/**
+ * FaqSection Shared Slice
+ *
+ * - **API ID**: `faq_section`
+ * - **Description**: FaqSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSectionSlice = prismic.SharedSlice<
+  "faq_section",
+  FaqSectionSliceVariation
+>;
+
+/**
  * Primary content in *TextSection → Primary*
  */
 export interface HeroSectionSliceDefaultPrimary {
@@ -1185,6 +1241,10 @@ declare module "@prismicio/client" {
       BlogContentSectionSliceDefaultItem,
       BlogContentSectionSliceVariation,
       BlogContentSectionSliceDefault,
+      FaqSectionSlice,
+      FaqSectionSliceDefaultItem,
+      FaqSectionSliceVariation,
+      FaqSectionSliceDefault,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceCtaButtonPrimary,
