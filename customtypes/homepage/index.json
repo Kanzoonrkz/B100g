@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "call_to_action_section": {
+              "type": "SharedSlice"
+            },
             "faq_section": {
               "type": "SharedSlice"
             },

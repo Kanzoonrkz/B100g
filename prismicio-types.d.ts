@@ -250,6 +250,7 @@ export type CourseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
 
 type HomepageDocumentDataSlicesSlice =
+  | CallToActionSectionSlice
   | FaqSectionSlice
   | MotivationalSliceSlice
   | HeroSectionSlice
@@ -778,6 +779,161 @@ export type BlogContentSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *CallToActionSection → Primary*
+ */
+export interface CallToActionSectionSliceDefaultPrimary {
+  /**
+   * Title field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Primary Buton Label field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.primary_buton_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  primary_buton_label: prismic.KeyTextField;
+
+  /**
+   * Primary Button Link field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.primary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_button_link: prismic.LinkField;
+
+  /**
+   * Secondary Button Label field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.secondary_button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  secondary_button_label: prismic.KeyTextField;
+
+  /**
+   * Secondary Button Link field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.secondary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  secondary_button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for CallToActionSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CallToActionSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *CallToActionSection → Primary*
+ */
+export interface CallToActionSectionSliceOneButtonPrimary {
+  /**
+   * Title field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Primary Buton Label field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.primary_buton_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  primary_buton_label: prismic.KeyTextField;
+
+  /**
+   * Primary Button Link field in *CallToActionSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_section.primary.primary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_button_link: prismic.LinkField;
+}
+
+/**
+ * One Button variation for CallToActionSection Slice
+ *
+ * - **API ID**: `oneButton`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSectionSliceOneButton = prismic.SharedSliceVariation<
+  "oneButton",
+  Simplify<CallToActionSectionSliceOneButtonPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CallToActionSection*
+ */
+type CallToActionSectionSliceVariation =
+  | CallToActionSectionSliceDefault
+  | CallToActionSectionSliceOneButton;
+
+/**
+ * CallToActionSection Shared Slice
+ *
+ * - **API ID**: `call_to_action_section`
+ * - **Description**: CallToActionSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSectionSlice = prismic.SharedSlice<
+  "call_to_action_section",
+  CallToActionSectionSliceVariation
+>;
+
+/**
  * Primary content in *FaqSection → Items*
  */
 export interface FaqSectionSliceDefaultItem {
@@ -1241,6 +1397,12 @@ declare module "@prismicio/client" {
       BlogContentSectionSliceDefaultItem,
       BlogContentSectionSliceVariation,
       BlogContentSectionSliceDefault,
+      CallToActionSectionSlice,
+      CallToActionSectionSliceDefaultPrimary,
+      CallToActionSectionSliceOneButtonPrimary,
+      CallToActionSectionSliceVariation,
+      CallToActionSectionSliceDefault,
+      CallToActionSectionSliceOneButton,
       FaqSectionSlice,
       FaqSectionSliceDefaultItem,
       FaqSectionSliceVariation,
