@@ -249,7 +249,10 @@ interface CourseDocumentData {
 export type CourseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
 
-type HomepageDocumentDataSlicesSlice = HeroSectionSlice | HeroTextSlice;
+type HomepageDocumentDataSlicesSlice =
+  | MotivationalSliceSlice
+  | HeroSectionSlice
+  | HeroTextSlice;
 
 /**
  * Content for Homepage documents
@@ -1091,6 +1094,51 @@ export type HeroTextSlice = prismic.SharedSlice<
   HeroTextSliceVariation
 >;
 
+/**
+ * Primary content in *MotivationalSlice → Primary*
+ */
+export interface MotivationalSliceSliceDefaultPrimary {
+  /**
+   * Title field in *MotivationalSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: motivational_slice.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for MotivationalSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MotivationalSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MotivationalSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MotivationalSlice*
+ */
+type MotivationalSliceSliceVariation = MotivationalSliceSliceDefault;
+
+/**
+ * MotivationalSlice Shared Slice
+ *
+ * - **API ID**: `motivational_slice`
+ * - **Description**: MotivationalSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MotivationalSliceSlice = prismic.SharedSlice<
+  "motivational_slice",
+  MotivationalSliceSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1153,6 +1201,10 @@ declare module "@prismicio/client" {
       HeroTextSliceNoButton,
       HeroTextSliceTitleOnly,
       HeroTextSliceCentered,
+      MotivationalSliceSlice,
+      MotivationalSliceSliceDefaultPrimary,
+      MotivationalSliceSliceVariation,
+      MotivationalSliceSliceDefault,
     };
   }
 }

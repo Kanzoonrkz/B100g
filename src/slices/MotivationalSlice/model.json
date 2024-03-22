@@ -1,0 +1,26 @@
+{
+  "id": "motivational_slice",
+  "type": "SharedSlice",
+  "name": "MotivationalSlice",
+  "description": "MotivationalSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
