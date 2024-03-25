@@ -16,7 +16,20 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "call_to_action_section": {
+              "type": "SharedSlice"
+            },
+            "motivational_slice": {
+              "type": "SharedSlice"
+            },
+            "faq_section": {
+              "type": "SharedSlice"
+            },
+            "hero_text": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

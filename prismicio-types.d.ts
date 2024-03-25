@@ -253,7 +253,6 @@ type HomepageDocumentDataSlicesSlice =
   | CallToActionSectionSlice
   | FaqSectionSlice
   | MotivationalSliceSlice
-  | HeroSectionSlice
   | HeroTextSlice;
 
 /**
@@ -453,7 +452,11 @@ export type LessonGroupDocument<Lang extends string = string> =
     Lang
   >;
 
-type MarketingPageDocumentDataSlicesSlice = never;
+type MarketingPageDocumentDataSlicesSlice =
+  | CallToActionSectionSlice
+  | MotivationalSliceSlice
+  | FaqSectionSlice
+  | HeroTextSlice;
 
 /**
  * Content for Marketing Page documents
@@ -989,121 +992,6 @@ export type FaqSectionSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *TextSection → Primary*
- */
-export interface HeroSectionSliceDefaultPrimary {
-  /**
-   * Hero Title field in *TextSection → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_section.primary.hero_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  hero_title: prismic.KeyTextField;
-
-  /**
-   * Description field in *TextSection → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_section.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  description: prismic.KeyTextField;
-}
-
-/**
- * Default variation for TextSection Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HeroSectionSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<HeroSectionSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Primary content in *TextSection → Primary*
- */
-export interface HeroSectionSliceCtaButtonPrimary {
-  /**
-   * Hero Title field in *TextSection → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_section.primary.hero_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  hero_title: prismic.KeyTextField;
-
-  /**
-   * Description field in *TextSection → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_section.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  description: prismic.KeyTextField;
-
-  /**
-   * Button Link field in *TextSection → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_section.primary.button_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_link: prismic.LinkField;
-
-  /**
-   * Button Label field in *TextSection → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_section.primary.button_label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button_label: prismic.KeyTextField;
-}
-
-/**
- * CTA Button variation for TextSection Slice
- *
- * - **API ID**: `ctaButton`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HeroSectionSliceCtaButton = prismic.SharedSliceVariation<
-  "ctaButton",
-  Simplify<HeroSectionSliceCtaButtonPrimary>,
-  never
->;
-
-/**
- * Slice variation for *TextSection*
- */
-type HeroSectionSliceVariation =
-  | HeroSectionSliceDefault
-  | HeroSectionSliceCtaButton;
-
-/**
- * TextSection Shared Slice
- *
- * - **API ID**: `hero_section`
- * - **Description**: HeroSection
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HeroSectionSlice = prismic.SharedSlice<
-  "hero_section",
-  HeroSectionSliceVariation
->;
-
-/**
  * Primary content in *HeroSection → Primary*
  */
 export interface HeroTextSliceDefaultPrimary {
@@ -1307,11 +1195,11 @@ export type HeroTextSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *MotivationalSlice → Primary*
+ * Primary content in *MotivationalSection → Primary*
  */
 export interface MotivationalSliceSliceDefaultPrimary {
   /**
-   * Title field in *MotivationalSlice → Primary*
+   * Title field in *MotivationalSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -1322,7 +1210,7 @@ export interface MotivationalSliceSliceDefaultPrimary {
 }
 
 /**
- * Default variation for MotivationalSlice Slice
+ * Default variation for MotivationalSection Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1335,12 +1223,12 @@ export type MotivationalSliceSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *MotivationalSlice*
+ * Slice variation for *MotivationalSection*
  */
 type MotivationalSliceSliceVariation = MotivationalSliceSliceDefault;
 
 /**
- * MotivationalSlice Shared Slice
+ * MotivationalSection Shared Slice
  *
  * - **API ID**: `motivational_slice`
  * - **Description**: MotivationalSlice
@@ -1407,12 +1295,6 @@ declare module "@prismicio/client" {
       FaqSectionSliceDefaultItem,
       FaqSectionSliceVariation,
       FaqSectionSliceDefault,
-      HeroSectionSlice,
-      HeroSectionSliceDefaultPrimary,
-      HeroSectionSliceCtaButtonPrimary,
-      HeroSectionSliceVariation,
-      HeroSectionSliceDefault,
-      HeroSectionSliceCtaButton,
       HeroTextSlice,
       HeroTextSliceDefaultPrimary,
       HeroTextSliceNoButtonPrimary,

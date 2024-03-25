@@ -6,7 +6,6 @@ export const components = {
   blog_content_section: dynamic(() => import("./ContentSection")),
   call_to_action_section: dynamic(() => import("./CallToActionSection")),
   faq_section: dynamic(() => import("./FaqSection")),
-  hero_section: dynamic(() => import("./TextSection")),
   hero_text: dynamic(() => import("./HeroSection")),
-  motivational_slice: dynamic(() => import("./MotivationalSlice")),
+  motivational_slice: dynamic(() => import("./MotivationalSection")),
 };

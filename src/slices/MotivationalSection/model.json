@@ -1,7 +1,7 @@
 {
   "id": "motivational_slice",
   "type": "SharedSlice",
-  "name": "MotivationalSlice",
+  "name": "MotivationalSection",
   "description": "MotivationalSlice",
   "variations": [
     {

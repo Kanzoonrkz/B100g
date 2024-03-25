@@ -20,9 +20,6 @@
             "motivational_slice": {
               "type": "SharedSlice"
             },
-            "hero_section": {
-              "type": "SharedSlice"
-            },
             "hero_text": {
               "type": "SharedSlice"
             }
