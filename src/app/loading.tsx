@@ -16,7 +16,7 @@ export default function Loading() {
 
 	return (
 		<div className="relative z-50">
-			<div className="fixed inset-0 top-0 left-0 h-screen bg-black grid place-content-center ">
+			<div className="fixed inset-0 top-0 left-0 h-screen bg-light grid place-content-center ">
 				<Lottie
 					options={defaultOptions}
 					height={100}

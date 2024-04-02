@@ -16,7 +16,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className="text-base">
+		<html lang="en">
 			<body className="text-dark bg-light font-montserrat">
 				<Navigation />
 				{children}

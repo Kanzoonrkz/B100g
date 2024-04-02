@@ -1,6 +1,6 @@
 {
-  "id": "lesson",
-  "label": "Lesson",
+  "id": "blog",
+  "label": "Blog",
   "format": "page",
   "repeatable": true,
   "status": true,
@@ -19,15 +19,42 @@
           "placeholder": ""
         }
       },
+      "reading_time": {
+        "type": "Number",
+        "config": {
+          "label": "Reading Time",
+          "placeholder": ""
+        }
+      },
+      "generated_date": {
+        "type": "Date",
+        "config": {
+          "label": "Generated Date",
+          "placeholder": ""
+        }
+      },
+      "writer": {
+        "type": "Link",
+        "config": {
+          "label": "Writer",
+          "select": "document",
+          "customtypes": ["writer"]
+        }
+      },
+      "article": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Article",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "blog_content_section": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     },

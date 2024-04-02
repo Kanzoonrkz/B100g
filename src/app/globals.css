@@ -20,16 +20,20 @@
 		border: none; /* Remove default border (adjust if you want a border) */
 		padding: 10px 20px; /* Adjust as needed */
 		-webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+		-webkit-background-clip: text;
 	}
 }
 
 @layer components {
-  .container-big {
-    @apply w-full max-w-screen-xl px-6 mx-auto md:px-4;
-  }
+	.container-big {
+		@apply w-full max-w-screen-xl px-6 mx-auto md:px-4;
+	}
 
 	.container-small {
-    @apply w-full max-w-screen-lg px-6 mx-auto md:px-4;
-  }
+		@apply w-full max-w-screen-lg px-6 mx-auto md:px-4;
+	}
+
+	.better-prose {
+		@apply prose md:text-lg text-dark prose-headings:text-inherit prose-headings:mt-0 prose-strong:text-inherit prose-invert prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 prose-p:mt-0 font-marcellus prose-a:text-sky-700 prose-pre:bg-neutral-800;
+	}
 }

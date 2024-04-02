@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "edge",
+				"type": "Text"
+			},
+			"article": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Qui deserunt nostrud ullamco est eiusmod reprehenderit ipsum ex ullamco deserunt nisi cupidatat id. Lorem incididunt ad adipisicing fugiat ullamco incididunt do sint pariatur amet. Culpa quis exercitation dolore Lorem ipsum aliquip amet."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]
