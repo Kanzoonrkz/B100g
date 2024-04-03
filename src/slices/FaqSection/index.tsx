@@ -20,7 +20,7 @@ const FaqSection = ({ slice }: FaqSectionProps): JSX.Element => {
 		>
 			<div className="border-black divide-y divide-black border-y">
 				{slice.items.map((faq) => (
-					<FaqDisclosure data={faq} />
+					<FaqDisclosure data={faq} key={faq.question}/>
 				))}
 			</div>
 		</section>

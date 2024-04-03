@@ -66,7 +66,7 @@ export default function CourseTab({
 							<PrismicRichText field={overview} />
 						</Tab.Panel>
 						{data.map((lesson) => (
-							<Tab.Panel>
+							<Tab.Panel key={lesson.section_title}>
 								<h2>{lesson.section_title}</h2>
 								<PrismicRichText field={lesson.article} />
 							</Tab.Panel>

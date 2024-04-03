@@ -19,16 +19,23 @@ const createButton = <S extends ButtonStyle>(
 		[ButtonStyle.Secondary]: "bg-transparent border-dark text-dark border ",
 	};
 
-	return ({ children, onClick, className }) => (
-		<button
-			className={
-				"text-lg py-2 px-4 rounded-lg " + buttonStyles[style] + className
-			}
-			onClick={onClick}
-		>
-			{children}
-		</button>
-	);
+	function Button({ children, onClick, className }: ButtonProps) {
+		return (
+			<button
+				className={
+					"text-lg py-2 px-4 rounded-lg " + buttonStyles[style] + className
+				}
+				onClick={onClick}
+			>
+				{children}
+			</button>
+		);
+	}
+
+	Button.displayName =
+		style === ButtonStyle.Primary ? "PrimaryButton" : "SecondaryButton";
+
+	return Button;
 };
 
 const Button = {
