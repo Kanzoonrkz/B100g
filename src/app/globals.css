@@ -12,16 +12,6 @@
 	.text-balance {
 		text-wrap: balance;
 	}
-	.transparent-button {
-		/* background-color: blue; Initial button color */
-		color: transparent; /* Make text transparent */
-		-webkit-background-clip: text;
-		background-clip: text;
-		border: none; /* Remove default border (adjust if you want a border) */
-		padding: 10px 20px; /* Adjust as needed */
-		-webkit-text-fill-color: transparent;
-		-webkit-background-clip: text;
-	}
 }
 
 @layer components {

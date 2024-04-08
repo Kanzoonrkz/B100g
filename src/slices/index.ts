@@ -3,10 +3,9 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  blog_content_section: dynamic(() => import("./ContentSection")),
-  call_to_action_section: dynamic(() => import("./CallToActionSection")),
-  course_lesson_slice: dynamic(() => import("./CourseLessonSlice")),
-  faq_section: dynamic(() => import("./FaqSection")),
-  hero_text: dynamic(() => import("./HeroSection")),
-  motivational_slice: dynamic(() => import("./MotivationalSection")),
+	call_to_action_section: dynamic(() => import("./CallToActionSection")),
+	course_lesson_slice: dynamic(() => import("./CourseLessonSlice")),
+	faq_section: dynamic(() => import("./FaqSection")),
+	hero_text: dynamic(() => import("./HeroSection")),
+	motivational_slice: dynamic(() => import("./MotivationalSection")),
 };

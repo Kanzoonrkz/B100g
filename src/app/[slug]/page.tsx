@@ -1,8 +1,7 @@
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
-import React from "react";
+import { SliceZone } from "@prismicio/react";
 
 const queryMarketingPage = (slug: string) => {
 	const client = createClient();

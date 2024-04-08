@@ -1,10 +1,9 @@
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
-import React from "react";
-import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
+import { SliceZone } from "@prismicio/react";
+import Link from "next/link";
 
 const queryMainCoursesPage = () => {
 	const client = createClient();

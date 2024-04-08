@@ -1,8 +1,7 @@
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
-import React from "react";
-import MobileNavToggle from "./mobileNavToggle";
 import Link from "next/link";
+import MobileNavToggle from "./mobileNavToggle";
 
 const queryNavigation = () => {
 	const client = createClient();

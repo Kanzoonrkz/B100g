@@ -604,76 +604,6 @@ export type AllDocumentTypes =
   | WriterDocument;
 
 /**
- * Primary content in *ContentSection → Primary*
- */
-export interface BlogContentSectionSliceDefaultPrimary {
-  /**
-   * Section Title field in *ContentSection → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content_section.primary.section_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  section_title: prismic.KeyTextField;
-}
-
-/**
- * Primary content in *ContentSection → Items*
- */
-export interface BlogContentSectionSliceDefaultItem {
-  /**
-   * Image field in *ContentSection → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content_section.items[].image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Text field in *ContentSection → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_content_section.items[].text
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  text: prismic.RichTextField;
-}
-
-/**
- * Default variation for ContentSection Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogContentSectionSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<BlogContentSectionSliceDefaultPrimary>,
-  Simplify<BlogContentSectionSliceDefaultItem>
->;
-
-/**
- * Slice variation for *ContentSection*
- */
-type BlogContentSectionSliceVariation = BlogContentSectionSliceDefault;
-
-/**
- * ContentSection Shared Slice
- *
- * - **API ID**: `blog_content_section`
- * - **Description**: BlogContentSection
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type BlogContentSectionSlice = prismic.SharedSlice<
-  "blog_content_section",
-  BlogContentSectionSliceVariation
->;
-
-/**
  * Primary content in *CallToActionSection → Primary*
  */
 export interface CallToActionSectionSliceDefaultPrimary {
@@ -1220,11 +1150,6 @@ declare module "@prismicio/client" {
       WriterDocument,
       WriterDocumentData,
       AllDocumentTypes,
-      BlogContentSectionSlice,
-      BlogContentSectionSliceDefaultPrimary,
-      BlogContentSectionSliceDefaultItem,
-      BlogContentSectionSliceVariation,
-      BlogContentSectionSliceDefault,
       CallToActionSectionSlice,
       CallToActionSectionSliceDefaultPrimary,
       CallToActionSectionSliceOneButtonPrimary,

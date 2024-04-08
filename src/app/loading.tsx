@@ -1,10 +1,8 @@
-'use client'
-
-import Lottie from "react-lottie";
+"use client";
 import loadingAnimation from "@/lottie-animation/loading.json";
+import Lottie from "react-lottie";
 
 export default function Loading() {
-
 	const defaultOptions = {
 		loop: true,
 		autoplay: true,
@@ -16,7 +14,7 @@ export default function Loading() {
 
 	return (
 		<div className="relative z-50">
-			<div className="fixed inset-0 top-0 left-0 h-screen bg-light grid place-content-center ">
+			<div className="fixed inset-0 top-0 left-0 grid h-screen bg-light place-content-center ">
 				<Lottie
 					options={defaultOptions}
 					height={100}

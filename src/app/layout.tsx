@@ -1,7 +1,7 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import Navigation from "../components/navigation";
 import Footer from "../components/footer";
+import Navigation from "../components/navigation";
+import "./globals.css";
 
 export const dynamic = "force-dynamic";
 
