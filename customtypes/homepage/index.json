@@ -11,7 +11,16 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "hero_section": {
+            "call_to_action_section": {
+              "type": "SharedSlice"
+            },
+            "faq_section": {
+              "type": "SharedSlice"
+            },
+            "motivational_slice": {
+              "type": "SharedSlice"
+            },
+            "hero_text": {
               "type": "SharedSlice"
             }
           }

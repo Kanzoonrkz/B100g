@@ -19,20 +19,20 @@
           "placeholder": ""
         }
       },
-      "parent_lesson_list": {
-        "type": "Group",
+      "overview": {
+        "type": "StructuredText",
         "config": {
-          "label": "Parent Lesson List",
-          "fields": {
-            "lesson": {
-              "type": "Link",
-              "config": {
-                "label": "Lesson",
-                "select": "document",
-                "customtypes": ["lesson", "lesson_group"]
-              }
-            }
-          }
+          "label": "Overview",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2,heading3,heading4,heading5,heading6"
+        }
+      },
+      "generated_date": {
+        "type": "Date",
+        "config": {
+          "label": "Generated Date",
+          "placeholder": ""
         }
       },
       "writer": {
@@ -48,7 +48,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "blog_content_section": {
+            "course_lesson_slice": {
               "type": "SharedSlice"
             }
           }

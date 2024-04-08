@@ -15,6 +15,14 @@ const config: Config = {
 				"gradient-conic":
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
+			fontFamily: {
+				montserrat: "Montserrat Variable, sans-serif",
+				marcellus: "Marcellus, serif",
+			},
+			colors: {
+				light: "#FAF3F0",
+				dark: "#364439",
+			},
 		},
 	},
 	plugins: [require("@tailwindcss/typography")],
