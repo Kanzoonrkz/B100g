@@ -27,12 +27,18 @@ const CallToActionSection = ({
 					<p className="text-lg font-light text-center">
 						{slice.primary.subtitle}
 					</p>
-					<div className="flex justify-center gap-4 mt-4">
-						<Button.Primary className="w-2/6">
+					<div className="flex justify-center gap-4 mt-4 font-marcellus">
+						<Button.Primary
+							className="w-2/6"
+							link={slice.primary.primary_button_link}
+						>
 							{slice.primary.primary_buton_label}
 						</Button.Primary>
 						{slice.variation === "default" && (
-							<Button.Secondary className="w-2/6">
+							<Button.Secondary
+								className="w-2/6"
+								link={slice.primary.secondary_button_link}
+							>
 								{slice.primary.secondary_button_label}
 							</Button.Secondary>
 						)}

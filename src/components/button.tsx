@@ -1,3 +1,5 @@
+import { LinkField } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import React from "react";
 
 enum ButtonStyle {
@@ -7,7 +9,7 @@ enum ButtonStyle {
 
 interface ButtonProps {
 	children: React.ReactNode;
-	onClick?: () => void;
+	link: LinkField;
 	className?: string;
 }
 
@@ -19,16 +21,16 @@ const createButton = <S extends ButtonStyle>(
 		[ButtonStyle.Secondary]: "bg-transparent border-dark text-dark border ",
 	};
 
-	function Button({ children, onClick, className }: ButtonProps) {
+	function Button({ children, link, className }: ButtonProps) {
 		return (
-			<button
+			<PrismicNextLink
 				className={
-					"text-lg py-2 px-4 rounded-lg " + buttonStyles[style] + className
+					"text-lg py-2 px-4 rounded-lg text-center " + buttonStyles[style] + className
 				}
-				onClick={onClick}
+				field={link}
 			>
 				{children}
-			</button>
+			</PrismicNextLink>
 		);
 	}
 

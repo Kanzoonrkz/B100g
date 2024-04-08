@@ -40,8 +40,10 @@ const HeroText = ({ slice }: HeroTextProps): JSX.Element => {
 				)}
 				{slice.variation === "default" && (
 					<div className="flex gap-4 mt-6">
-						<Button.Primary>{slice.primary.primary_buton_label}</Button.Primary>
-						<Button.Secondary>
+						<Button.Primary link={slice.primary.primary_button_link}>
+							{slice.primary.primary_buton_label}
+						</Button.Primary>
+						<Button.Secondary link={slice.primary.secondary_button_link}>
 							{slice.primary.secondary_button_label}
 						</Button.Secondary>
 					</div>
