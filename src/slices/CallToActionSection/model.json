@@ -1,0 +1,103 @@
+{
+  "id": "call_to_action_section",
+  "type": "SharedSlice",
+  "name": "CallToActionSection",
+  "description": "CallToActionSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "primary_buton_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary Buton Label",
+            "placeholder": ""
+          }
+        },
+        "primary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Button Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "secondary_button_label": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary Button Label",
+            "placeholder": ""
+          }
+        },
+        "secondary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary Button Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "oneButton",
+      "name": "One Button",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "primary_buton_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary Buton Label",
+            "placeholder": ""
+          }
+        },
+        "primary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Button Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

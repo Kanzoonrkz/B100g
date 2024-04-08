@@ -1,13 +1,11 @@
-import React from "react";
 import { createClient } from "@/prismicio";
 import * as prismic from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { SliceZone } from "@prismicio/react";
-import { components } from "@/slices";
+import { PrismicRichText } from "@prismicio/react";
 
 const queryBlogPage = (uid: string) => {
 	const client = createClient();
-	return client.getByUID("blogs", uid, {
+	return client.getByUID("blog", uid, {
 		fetchLinks: ["writer.name", "writer.image", "writer.company"],
 	});
 };
@@ -44,25 +42,27 @@ export default async function BlogPage({
 				field={page.data.meta_image}
 				width={1080}
 			/>
-			<h1 className="max-w-xl px-6 mx-auto text-3xl font-bold text-center md:max-w-6xl md:text-5xl text-balance">
+			<h1 className="max-w-xl px-6 mx-auto text-3xl text-center md:max-w-6xl md:text-5xl text-balance">
 				{page.data.title}
 			</h1>
-			<div className="flex w-full max-w-xl px-6 py-2 mx-auto text-start border-y">
-				<div className="flex items-center gap-2 py-1">
-					<PrismicNextImage
-						className="object-cover rounded-full aspect-square"
-						height={35}
-						width={35}
-						field={page.data.writer.data.image}
-					/>
-					<aside className="grid text-sm text-gray-400">
-						<span>{page.data.writer.data.name}</span>
-						<span>from {page.data.writer.data.company}</span>
-					</aside>
+			<div className="flex items-center w-full max-w-2xl gap-2 px-6 py-3 mx-auto border-gray-300 text-start border-y">
+				<PrismicNextImage
+					className="object-cover rounded-full aspect-square"
+					height={35}
+					width={35}
+					field={page.data.writer.data.image}
+				/>
+				<div className="grid text-sm text-gray-500">
+					<span>{page.data.writer.data.name}</span>
+					<span>from {page.data.writer.data.company}</span>
+				</div>
+				<div className="grid ml-auto text-sm text-right text-gray-500">
+					<span>Published on</span>
+					<span>{page.data.generated_date}</span>
 				</div>
 			</div>
-			<article className="grid max-w-xl gap-10 px-6 mx-auto prose text-white prose-invert prose-a:no-underline">
-				<SliceZone slices={page.data.slices} components={components} />
+			<article className="max-w-xl px-6 mx-auto prose md:text-lg text-dark prose-headings:text-inherit prose-headings:mt-0 prose-strong:text-inherit prose-invert prose-a:no-underline prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 prose-p:mt-0 font-marcellus prose-link:text-inherit">
+				<PrismicRichText field={page.data.article} />
 			</article>
 		</main>
 	);

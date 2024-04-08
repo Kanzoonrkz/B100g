@@ -1,8 +1,8 @@
 {
-  "id": "blog_content_section",
+  "id": "course_lesson_slice",
   "type": "SharedSlice",
-  "name": "ContentSection",
-  "description": "BlogContentSection",
+  "name": "CourseLessonSlice",
+  "description": "CourseLessonSlice",
   "variations": [
     {
       "id": "default",
@@ -18,27 +18,18 @@
             "label": "Section Title",
             "placeholder": ""
           }
-        }
-      },
-      "items": {
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
-          }
         },
-        "text": {
+        "article": {
           "type": "StructuredText",
           "config": {
-            "label": "Text",
+            "label": "Article",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,list-item,o-list-item"
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

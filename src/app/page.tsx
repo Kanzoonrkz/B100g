@@ -1,7 +1,8 @@
+// "use client";
 import { createClient } from "@/prismicio";
+import { components } from "@/slices";
 import * as prismic from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
-import { components } from "@/slices";
 
 const queryHomepage = () => {
 	const client = createClient();
