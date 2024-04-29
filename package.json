@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"start-slicemachine\"",
-    "develop": "next dev",
+    "dev": "next dev",
+    "slicemachine": "start-slicemachine",
+    "dev:all": "concurrently \"next dev\" \"start-slicemachine\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "slicemachine": "start-slicemachine"
+    "lint": "next lint"
   },
   "dependencies": {
     "@fontsource-variable/montserrat": "^5.0.17",
