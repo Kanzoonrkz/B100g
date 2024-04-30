@@ -16,7 +16,7 @@ export default function MobileNavToggle(props: Props) {
 		<>
 			<button
 				aria-label="toggle-mobile-navigation"
-				className="absolute right-0 z-50 md:hidden"
+				className="absolute right-0 z-50 -translate-x-1/2 md:hidden"
 				onClick={() => {
 					setIsOpen(!isOpen);
 				}}
@@ -51,8 +51,8 @@ export default function MobileNavToggle(props: Props) {
 						leaveFrom="translate-x-0"
 						leaveTo="translate-x-full"
 					>
-						<div className="fixed inset-y-0 right-0 w-2/5 h-screen overflow-y-auto">
-							<Dialog.Panel className="w-full h-screen max-w-md p-6 overflow-hidden text-lg text-left transition-all transform bg-black shadow-xl">
+						<div className="fixed inset-y-0 right-0 h-screen overflow-y-auto w-60">
+							<Dialog.Panel className="w-full h-screen max-w-md p-6 overflow-hidden text-lg text-left transition-all transform shadow-xl bg-light">
 								<nav>
 									<ul className="flex flex-col items-start justify-start gap-6">
 										{props.nav.data.nav_group.map((link: any) => (
