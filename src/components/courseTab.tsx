@@ -17,8 +17,10 @@ export default function CourseTab({
 	const [courseNow, setCourseNow] = useState(
 		Number(searchParams.get("progress"))
 	);
+
 	const updateProgress = (key: any, value: any) => {
 		window.scrollTo({ top: 300, behavior: "smooth" });
+
 		const params = new URLSearchParams(searchParams.toString());
 		params.set(key, value);
 		setCourseNow(value);
@@ -35,11 +37,11 @@ export default function CourseTab({
 		>
 			<div className="relative grid w-full max-w-6xl grid-cols-3 px-6 mx-auto">
 				<Tab.List>
-					<div className="sticky flex flex-col p-2 rounded-lg top-24 bg-dark text-light">
+					<div className="sticky flex flex-col gap-2 p-2 rounded-lg top-24 bg-dark text-light">
 						<Tab
 							key={"overview"}
 							className={({ selected }) =>
-								`text-start rounded p-1 ${
+								`text-start rounded p-1 hover:bg-white hover:bg-opacity-10 ${
 									selected && "bg-light bg-opacity-20 font-semibold"
 								}`
 							}
@@ -50,7 +52,7 @@ export default function CourseTab({
 							<Tab
 								key={lesson.section_title}
 								className={({ selected }) =>
-									`text-start rounded p-1 ${
+									`text-start rounded p-1 hover:bg-white hover:bg-opacity-10 ${
 										selected && "bg-light bg-opacity-20 font-semibold"
 									}`
 								}
