@@ -14,8 +14,9 @@ export default function CourseTab({
 	overview: RichTextField;
 }) {
 	const searchParams = useSearchParams();
+	const progressParams = "progress";
 	const [courseNow, setCourseNow] = useState(
-		Number(searchParams.get("progress"))
+		Number(searchParams.get(progressParams))
 	);
 
 	const updateProgress = (key: any, value: any) => {
@@ -30,9 +31,9 @@ export default function CourseTab({
 	return (
 		<Tab.Group
 			selectedIndex={courseNow}
-			defaultIndex={Number(searchParams.get("progress"))}
+			defaultIndex={Number(searchParams.get(progressParams))}
 			onChange={(index: number) => {
-				updateProgress("progress", index);
+				updateProgress(progressParams, index);
 			}}
 		>
 			<div className="relative grid w-full max-w-6xl grid-cols-3 px-6 mx-auto">
@@ -79,7 +80,7 @@ export default function CourseTab({
 			<div className="flex justify-between w-full px-6 py-6 mx-auto container-big md:px-4">
 				<button
 					onClick={() => {
-						updateProgress("progress", 0);
+						updateProgress(progressParams, 0);
 					}}
 					hidden={courseNow !== 1}
 				>
@@ -87,14 +88,14 @@ export default function CourseTab({
 				</button>
 				<button
 					onClick={() => {
-						updateProgress("progress", courseNow - 1);
+						updateProgress(progressParams, courseNow - 1);
 					}}
 				>
 					{courseNow > 1 && "< " + data[courseNow - 2].section_title}
 				</button>
 				<button
 					onClick={() => {
-						updateProgress("progress", courseNow + 1);
+						updateProgress(progressParams, courseNow + 1);
 					}}
 				>
 					{courseNow < data.length && data[courseNow].section_title + " >"}
