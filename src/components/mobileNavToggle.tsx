@@ -16,7 +16,7 @@ export default function MobileNavToggle(props: Props) {
 		<>
 			<button
 				aria-label="toggle-mobile-navigation"
-				className="absolute right-0 z-50 md:hidden"
+				className="absolute right-0 z-50 -translate-x-1/2 md:hidden"
 				onClick={() => {
 					setIsOpen(!isOpen);
 				}}
