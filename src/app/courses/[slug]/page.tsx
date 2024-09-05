@@ -44,7 +44,7 @@ export default async function CoursePage({
 				field={page.data.meta_image}
 				width={1080}
 			/>
-			<h1 className="max-w-xl px-6 mx-auto text-3xl text-center md:max-w-6xl md:text-5xl text-balance">
+			<h1 className="max-w-xl px-6 mx-auto text-3xl text-center md:max-w-6xl md:text-5xl text-balance font-marcellus">
 				{page.data.title}
 			</h1>
 

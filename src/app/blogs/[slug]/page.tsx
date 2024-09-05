@@ -42,7 +42,7 @@ export default async function BlogPage({
 				field={page.data.meta_image}
 				width={1080}
 			/>
-			<h1 className="max-w-xl px-6 mx-auto text-3xl text-center md:max-w-6xl md:text-5xl text-balance">
+			<h1 className="max-w-xl px-6 mx-auto text-3xl text-center md:max-w-6xl md:text-5xl text-balance font-marcellus">
 				{page.data.title}
 			</h1>
 			<div className="flex items-center w-full max-w-2xl gap-2 px-6 py-3 mx-auto border-gray-300 text-start border-y">
@@ -61,7 +61,7 @@ export default async function BlogPage({
 					<span>{page.data.generated_date}</span>
 				</div>
 			</div>
-			<article className="max-w-xl px-6 mx-auto prose md:text-lg text-dark prose-headings:text-inherit prose-headings:mt-0 prose-strong:text-inherit prose-invert prose-a:no-underline prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 prose-p:mt-0 font-marcellus prose-link:text-inherit">
+			<article className="max-w-xl px-6 mx-auto prose md:text-lg text-dark prose-headings:text-inherit prose-headings:mt-0 prose-strong:text-inherit prose-invert prose-a:no-underline prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 prose-p:mt-0 prose-link:text-inherit">
 				<PrismicRichText field={page.data.article} />
 			</article>
 		</main>

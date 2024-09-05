@@ -42,8 +42,7 @@ export default function CourseTab({
 						<Tab
 							key={"overview"}
 							className={({ selected }) =>
-								`text-start rounded p-1 hover:bg-white hover:bg-opacity-10 ${
-									selected && "bg-light bg-opacity-20 font-semibold"
+								`text-start rounded p-1 hover:bg-white hover:bg-opacity-10 ${selected && "bg-light bg-opacity-20 font-semibold"
 								}`
 							}
 						>
@@ -53,8 +52,7 @@ export default function CourseTab({
 							<Tab
 								key={lesson.section_title}
 								className={({ selected }) =>
-									`text-start rounded p-1 hover:bg-white hover:bg-opacity-10 ${
-										selected && "bg-light bg-opacity-20 font-semibold"
+									`text-start rounded p-1 hover:bg-white hover:bg-opacity-10 ${selected && "bg-light bg-opacity-20 font-semibold"
 									}`
 								}
 							>
@@ -64,7 +62,7 @@ export default function CourseTab({
 					</div>
 				</Tab.List>
 				<Tab.Panels className={"col-span-2"}>
-					<article className="grid w-full max-w-2xl col-span-2 gap-5 px-6 mx-auto prose prose-invert prose-a:no-underline prose-h2:text-inherit prose-h3:text-inherit prose-h4:text-inherit prose-strong:text-inherit prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 text-dark prose-p:mt-0 prose-headings:mt-0 prose-link:text-inherit font-marcellus">
+					<article className="grid w-full max-w-2xl col-span-2 gap-5 px-6 mx-auto prose prose-invert prose-a:no-underline prose-h2:text-inherit prose-h3:text-inherit prose-h4:text-inherit prose-strong:text-inherit prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 text-dark prose-p:mt-0 prose-headings:mt-0 prose-link:text-inherit">
 						<Tab.Panel>
 							<PrismicRichText field={overview} />
 						</Tab.Panel>
