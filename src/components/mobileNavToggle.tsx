@@ -1,5 +1,5 @@
 "use client";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import { Bars2Icon } from "@heroicons/react/24/solid";
 import { PrismicNextLink } from "@prismicio/next";
 import { Fragment, useState } from "react";
@@ -30,7 +30,7 @@ export default function MobileNavToggle(props: Props) {
 					className="relative z-10"
 					onClose={() => setIsOpen(false)}
 				>
-					<Transition.Child
+					<TransitionChild
 						as={Fragment}
 						enter="ease-out duration-300"
 						enterFrom="opacity-0"
@@ -40,9 +40,9 @@ export default function MobileNavToggle(props: Props) {
 						leaveTo="opacity-0"
 					>
 						<div className="fixed inset-0 bg-black bg-opacity-50" />
-					</Transition.Child>
+					</TransitionChild>
 
-					<Transition.Child
+					<TransitionChild
 						as={Fragment}
 						enter="transition ease-out duration-300 transform"
 						enterFrom="translate-x-full"
@@ -52,7 +52,7 @@ export default function MobileNavToggle(props: Props) {
 						leaveTo="translate-x-full"
 					>
 						<div className="fixed inset-y-0 right-0 h-screen overflow-y-auto w-60">
-							<Dialog.Panel className="w-full h-screen max-w-md p-6 overflow-hidden text-lg text-left transition-all transform shadow-xl bg-light">
+							<DialogPanel className="w-full h-screen max-w-md p-6 overflow-hidden text-lg text-left transition-all transform shadow-xl bg-light">
 								<nav>
 									<ul className="flex flex-col items-start justify-start gap-6">
 										{props.nav.data.nav_group.map((link: any) => (
@@ -68,9 +68,9 @@ export default function MobileNavToggle(props: Props) {
 										))}
 									</ul>
 								</nav>
-							</Dialog.Panel>
+							</DialogPanel>
 						</div>
-					</Transition.Child>
+					</TransitionChild>
 				</Dialog>
 			</Transition>
 		</>

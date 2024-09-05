@@ -1,5 +1,5 @@
 "use client";
-import { Tab } from "@headlessui/react";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { useSearchParams } from "next/navigation";
@@ -29,7 +29,7 @@ export default function CourseTab({
 	};
 
 	return (
-		<Tab.Group
+		<TabGroup
 			selectedIndex={courseNow}
 			defaultIndex={Number(searchParams.get(progressParams))}
 			onChange={(index: number) => {
@@ -37,7 +37,7 @@ export default function CourseTab({
 			}}
 		>
 			<div className="relative grid w-full max-w-6xl grid-cols-3 px-6 mx-auto">
-				<Tab.List>
+				<TabList>
 					<div className="sticky flex flex-col gap-2 p-2 rounded-lg top-24 bg-dark text-light">
 						<Tab
 							key={"overview"}
@@ -60,20 +60,20 @@ export default function CourseTab({
 							</Tab>
 						))}
 					</div>
-				</Tab.List>
-				<Tab.Panels className={"col-span-2"}>
+				</TabList>
+				<TabPanels className={"col-span-2"}>
 					<article className="grid w-full max-w-2xl col-span-2 gap-5 px-6 mx-auto prose prose-invert prose-a:no-underline prose-h2:text-inherit prose-h3:text-inherit prose-h4:text-inherit prose-strong:text-inherit prose-img:max-h-28 prose-img:mx-auto prose-ul:my-0 prose-ol:my-0 text-dark prose-p:mt-0 prose-headings:mt-0 prose-link:text-inherit">
-						<Tab.Panel>
+						<TabPanel>
 							<PrismicRichText field={overview} />
-						</Tab.Panel>
+						</TabPanel>
 						{data.map((lesson) => (
-							<Tab.Panel key={lesson.section_title}>
+							<TabPanel key={lesson.section_title}>
 								<h2>{lesson.section_title}</h2>
 								<PrismicRichText field={lesson.article} />
-							</Tab.Panel>
+							</TabPanel>
 						))}
 					</article>
-				</Tab.Panels>
+				</TabPanels>
 			</div>
 			<div className="flex justify-between w-full px-6 py-6 mx-auto container-big md:px-4">
 				<button
@@ -99,6 +99,6 @@ export default function CourseTab({
 					{courseNow < data.length && data[courseNow].section_title + " >"}
 				</button>
 			</div>
-		</Tab.Group>
+		</TabGroup>
 	);
 }
